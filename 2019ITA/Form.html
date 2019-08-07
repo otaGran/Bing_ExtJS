@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Form</title>
+	<link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+ 	<!-- LIBS -->
+ 	<script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+ 	<!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+	<script>
+		Ext.onReady(function() {
+			var form = new Ext.form.FormPanel({
+				id: 'testForm',
+				renderTo: 'test',
+				defaultType: 'textfield',
+				labelAlign: 'center',
+				title: 'simple form',
+				labelWidth: 50,
+				frame: true,
+				width: 300,
+				items: [{
+					id: 'nameField',
+					msgTarget: 'title',
+					fieldLabel: 'names'
+				}],
+				buttons:[{
+					text: 'submit',
+					listeners:{
+					'click': function(btn, form){
+						Ext.getCmp('nameField').markInvalid('field is required!');
+					}}
+				}]
+		   });
+	    });
+	</script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>ComboBox3</title>
+	<link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+ 	<!-- LIBS -->
+ 	<script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+ 	<!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+	<script>
+		Ext.onReady(function() {
+			var combox = new Ext.form.ComboBox({
+				id: 'age',
+				renderTo: 'test',
+				fieldLabel: 'Age',
+				emptyText: 'Choose/Input your age',
+				mode: 'local',
+				store: new Ext.data.ArrayStore({
+					id: 0,
+					fields: ['age', 'description'],
+					data: [[22, 'i\'m 22 years old'], [23, 'i\'m 23 years old'], [24, 'i\'m 24 years old']]
+				}),
+				valueField: 'age',
+				displayField: 'description'
+			});
+			combox.on('select', function(combo) {
+				Ext.MessageBox.alert('ComboBox', 'you choose ' + combo.getValue() + '-' + combo.getRawValue());
+			});
+	    });
+	</script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

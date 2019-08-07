@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Plugin</title>
+	<link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+ 	<!-- LIBS -->
+ 	<script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+ 	<!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+	<script>
+		Ext.onReady(function() {
+			ColorPlugin = function() {
+				this.init = function(cmp){
+					cmp.bodyStyle = 'color:red';
+				};
+			};
+
+			var panel = new Ext.Panel({
+				renderTo: 'test',
+				title: 'Plugin',
+				html: 'This is plugin example, the plugin will turn the font color into red.',
+				height: 150,
+				plugins: [new ColorPlugin()]
+			});
+			panel.render();
+		});
+	</script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

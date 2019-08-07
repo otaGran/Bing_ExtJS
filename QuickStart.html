@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>QuickStart</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var container = new Ext.Container({
+                renderTo: document.body,
+                layout: 'column',
+                layoutConfig: {
+                    columns: 2
+                },
+                cls: 'body',
+                autoHeight: true,
+                width: '100%',
+                style:{
+                  marginTop: '130px',
+                    marginLeft: '60px'
+                },
+                items: [
+                    {
+                        xtype: 'container',
+                        layout: {
+                            type: 'hbox',
+                            pack: 'center'
+                        },
+                        colspan: 2,
+                        defaultType: 'container',
+                        width: 1200,
+                        height: 200,
+                        items: [
+                            {
+                                xtype: 'box',
+                                height: 50,
+                                style: {
+                                    marginTop: '10px'
+                                },
+                                autoEl: {
+                                    tag: 'img',
+                                    src: 'bing.png'
+                                }
+                            },
+                            {   xtype: 'tabpanel',
+                                renderTo: document.body,
+                                height: 70,
+                                activeTab: 0,
+                                items:[
+
+                                    {
+                                        xtype: 'container',
+                                        colspan: 2,
+                                        width: 1200,
+                                        height: 50,
+                                        title:'国内版',
+                                        layout: 'hbox',
+                                        items:[
+                                            {
+                                                xtype: 'field',
+                                                colspan: 2,
+                                                width: 1000,
+                                                height: 50,
+
+                                            },{
+                                                xtype: 'button',
+                                                scale: 'large',
+                                                text: '',
+                                                iconCls: "hello-button",
+                                                width: 40,
+                                                height: 40,
+
+                                            }
+
+                                        ]
+
+                                    },
+                                    {
+                                        xtype: 'container',
+                                        colspan: 2,
+                                        width: 1200,
+                                        height: 50,
+                                        title:'国际版',
+                                        layout: 'hbox',
+                                        items:[
+                                            {
+                                                xtype: 'field',
+                                                colspan: 2,
+                                                width: 1000,
+                                                height: 50,
+
+                                            },{
+                                                xtype: 'button',
+                                                scale: 'large',
+                                                text: '',
+                                                iconCls: "hello-button",
+                                                width: 40,
+                                                height: 40,
+
+                                            }
+
+                                        ]
+
+                                    },
+                                ]
+                            }
+                            // , {
+                            //     xtype: 'field',
+                            //     colspan: 2,
+                            //     width: 1200,
+                            //     height: 50
+                            // }
+
+                        ]
+                    }]
+            });
+        });
+    </script>
+    <style type="text/css">
+        body {
+            background-image: url(bg.jpg);
+            background-repeat: no-repeat;
+        }
+        .hello-button {
+            background: url(icon.png) left top no-repeat !important;
+            background-position: -249px 0 !important;
+
+        }
+    </style>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Tree Context Menu</title>
+	<link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+ 	<!-- LIBS -->
+ 	<script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+ 	<!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+	<script>
+		Ext.onReady(function() {
+			var gz = new Ext.tree.TreeNode({text: 'GuangZhou'});
+			var sz = new Ext.tree.TreeNode({text: 'ShenZhen'});
+			var zh = new Ext.tree.TreeNode({text: 'ZhuHai'});
+			var xz = new Ext.tree.TreeNode({text: 'XiangZhou'});
+			
+			var root = new Ext.tree.TreeNode({
+				text:'GuangDong',
+				checked: true,
+				expanded: true
+			});
+			root.appendChild(gz);
+			root.appendChild(sz);
+			root.appendChild(zh);
+			
+			zh.appendChild(xz);
+			
+			var menu = new Ext.menu.Menu({
+				items: [{
+					id: 'deleteNode',
+					text: 'Delete Node'
+				}],
+				listeners: {
+					itemclick: function(item) {
+						switch (item.id) {
+							case 'deleteNode':
+								var currentNode = item.parentMenu.contextNode;
+								if (currentNode.parentNode) {
+									currentNode.remove();
+								}
+								break;
+						}
+					}
+				}
+			});
+			
+			var tree = new Ext.tree.TreePanel({
+				renderTo: 'test',
+				width: 200,
+				height: 150,
+				root: root,
+				contextMenu: menu,
+				listeners: {
+					contextmenu: function(node, e) {
+						node.select();
+						var treeContextMenu = node.getOwnerTree().contextMenu;
+						treeContextMenu.contextNode = node;
+						treeContextMenu.showAt(e.getXY());
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

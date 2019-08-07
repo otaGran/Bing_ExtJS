@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css">
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ext-all.js"></script>
+
+    <Script>
+
+        Ext.onReady(function () {
+
+            Bird = Ext.extend(Ext.util.Observable, {
+                constructor: function (config) {
+                    this.addEvents('eat', 'fly');
+                    this.addListener('fly', function () {
+                        Ext.MessageBox.alert('fly bird',bird.info('fly'));
+
+                    });
+                    this.addListener('eat', function () {
+                        Ext.MessageBox.alert('fly bird',bird.info('eat'));
+
+                    });
+                    Bird.superclass.constructor.call(this, config);
+                },
+                info: function (action) {
+                    return 'Bird can ' + action;
+                }
+
+            });
+            var bird = new Bird();
+
+
+            Ext.get('fly').on('click', function () {
+                bird.fireEvent('fly');
+
+            });
+            Ext.get('eat').on('click', function () {
+                bird.fireEvent('eat');
+
+            });
+        });
+    </Script>
+</head>
+<body>
+<button type="button" id="fly">fly</button>
+<button type="button" id="eat">eat</button>
+</body>
+</html>

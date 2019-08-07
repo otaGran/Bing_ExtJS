@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>HtmlEditor</title>
+	<link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+ 	<!-- LIBS -->
+ 	<script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+ 	<!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+	<script>
+		Ext.onReady(function() {
+			var form = new Ext.form.FormPanel({
+				id: 'testForm',
+				renderTo: 'test',
+				labelAlign: 'center',
+				title: 'form',
+				labelWidth: 60,
+				frame: true,
+				width: 800,
+				items: [{
+					xtype: 'htmleditor',
+					msgTarget: 'under',
+					width: 600,
+					fieldLabel: 'Article',
+					enableAlignments: true,
+					enableColors: true,
+					enableFont: true,
+					enableFontSize: true,
+					enableFormat: true,
+					enableLinks: true,
+					enableLists: true,
+					enableSourceEdit: true
+				}]
+		   });
+	    });
+	</script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

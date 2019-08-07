@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css">
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var boxCmp = new Ext.BoxComponent({
+                renderTo: 'test',
+                style: 'background-color: blue;position: absolute',
+                pageX: 100,
+                pageY: 50,
+                width: 200,
+                height: 150
+            });
+
+            Ext.get('changeColor').on('click', function () {
+
+               boxCmp.hide();
+               boxCmp.render();
+               boxCmp.show();
+
+            });
+
+        })
+    </script>
+</head>
+<body>
+<div id="test"></div>
+<button type="button" id="changeColor">changeColor</button>
+</body>
+</html>

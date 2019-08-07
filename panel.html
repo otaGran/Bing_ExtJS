@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create panel</title>
+    <link href="../../resources/css/ext-all.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            var navigate = function(panel,direction){
+                var layout = panel.getLayout();
+                layout[direction]();
+                Ext.getCmp('move-prev').setDisabled(!layout.getPrev());
+                Ext.getCmp('move-next').setDisabled(!layout.getNext());
+            };
+            var panel = new Ext.Panel({
+                renderTo: 'Test',
+                title: 'Greeting',
+                floating: true,
+                shadow: true,
+                draggable: true,
+                collapsible: true,
+                activeItem:0,
+                pageX: 100,
+                plain:true,
+                pageY: 50,
+                width: 600,
+                height: 700,
+                bbar:[{
+                    id:'move-prev',
+                    text:'back',
+                    handler:function(btn){
+                        navigate(btn.up("panel"),"pr ev");
+                    },
+                    disabled:true
+                },'->',{
+                    id:'move-next',
+                    text:"next",
+                    handler:function(btn){
+                        navigate(btn.up("panel"),"next");
+                    }
+                }],
+
+                items: [
+                    {
+                        xtype: 'panel',
+                        id:'card-0',
+
+                        title: 'Greeting1',
+                        draggable: true,
+                        collapsible: true,
+                        html: '111111111111111',
+                        width: 200,
+                        height: 150,
+                    },
+                    {
+                        xtype: 'panel',
+                        id:'card-1',
+                        title: 'Greeting2',
+                        draggable: true,
+                        collapsible: true,
+                        html: '2222222222222222222',
+                        width: 200,
+                        height: 150,
+                    },
+                    {
+                        xtype: 'panel',
+                        id:'card-2',
+                        title: 'Greeting3',
+                        draggable: true,
+                        collapsible: true,
+                        html: '333333333333333',
+                        width: 200,
+                        height: 150,
+                    }
+                ],
+                layout: 'card',
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div id="Test">
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../resources/css/ext-all.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all.js"></script>
+    <script>
+        Ext.ns('com.ita');
+        com.ita.CancelButton = Ext.extend(Ext.Button,{
+            text:'Cancel',
+            initComponent: function(){
+                com.ita.CancelButton.superclass.initComponent.call(this);
+                this.on('click', this.onButtonClick, this);
+            },
+            onButtonClick: function (oEvent) {
+                Ext.Msg.alert('Cancel Button', 'This is customized cancel button, you just clicked me');
+
+            }
+        });
+        Ext.reg('com.ita.CancelButton', com.ita.CancelButton);
+        Ext.onReady(function () {
+            var panel = new Ext.Panel({
+                renderTo: 'Test',
+                title: 'Greeting',
+                floating: true,
+                shadow: true,
+                draggable: true,
+                collapsible: true,
+                activeItem:0,
+                pageX: 100,
+                plain:true,
+                pageY: 50,
+                width: 300,
+                height: 200,
+                items: [
+                    {
+                        xtype: 'com.ita.CancelButton',
+                        baseCls: 'null',
+                        cls: 'buttonGreen',
+                        scope: this,
+
+
+
+                    },
+
+                ],
+                layout: '',
+            })
+        });
+    </script>
+    <style>
+        .buttonGreen{
+            background-color: red !important;
+            background-image: none !important;
+        }
+    </style>
+</head>
+<body>
+<div id="Test"></div>
+</body>
+</html>

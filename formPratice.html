@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="ext-all.js"></script>
+    <script>
+        Ext.onReady(function () {
+            Ext.QuickTips.init();
+
+            var form = new Ext.form.FormPanel({
+                title: 'form',
+                defaultType: 'textfield',
+                labelAlign: 'right',
+                labelWidth: 50,
+                buttonAlign: 'center',
+                frame:true,
+                width: 220,
+
+                items: [{
+                    fieldLabel: '文本框'
+                }],
+                buttons: [{
+                    text: '按钮',
+                    id: 'fly'
+                }]
+                ,
+                clearValue : function() {
+                    this.value = '';
+
+                },
+            });
+
+            form.render("form");
+            Ext.get('fly').on('click', function () {
+                console.log(form);
+                form
+
+                    .reset();
+
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<div id="form" style="margin:20px;"></div>
+</body>
+</html>

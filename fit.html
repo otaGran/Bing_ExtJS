@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="ext-all.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var store = new Ext.data.SimpleStore({
+                fields: ['id', 'name', 'desc'],
+                data: [
+                    ['1', 'name1', 'desc1'],
+                    ['2', 'name2', 'desc2'],
+                    ['3', 'name3', 'desc3'],
+                    ['4', 'name4', 'desc4'],
+                    ['5', 'name5', 'desc5'],
+                    ['6', 'name6', 'desc6'],
+                    ['7', 'name7', 'desc7'],
+                    ['8', 'name8', 'desc8'],
+                    ['9', 'name9', 'desc9'],
+                    ['10', 'name10', 'desc10']
+                ]
+            });
+            var grid = new Ext.grid.GridPanel({
+                title: 'grid',
+                viewConfig: {forceFit: true},
+                store: store,
+                columns: [
+                    {header:'id', dataIndex: 'id'},
+                    {header:'name', dataIndex:'name'},
+                    {header:'description', dataIndex:'desc'}
+                ],
+                tbar: new Ext.Toolbar(['Add','Modify','Delete']),
+                bbar: new Ext.PagingToolbar({
+                    pageSize: 15,
+                    store: store
+                })
+            });
+
+            var viewport = new Ext.Viewport({
+                layout: 'fit',
+                items: [grid,{
+                    xtype: 'panel',
+                    title:'123'
+                }]
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div id="form" style="margin:20px;"></div>
+
+
+</body>
+</html>

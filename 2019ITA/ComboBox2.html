@@ -12,21 +12,49 @@
 		Ext.onReady(function() {
 			var record = Ext.data.Record.create([{name: 'age'}, {name: 'description'}]);
 			var store = new Ext.data.Store({
-					proxy: new Ext.data.HttpProxy({url:'combox.txt'}),
+					proxy: new Ext.data.HttpProxy({url:'province.txt'}),
 					reader: new Ext.data.ArrayReader({}, record)
 				});
+			var store2 = new Ext.data.Store({
+				proxy: new Ext.data.HttpProxy({url:'city.txt'}),
+				reader: new Ext.data.ArrayReader({}, record)
+			});
+
+			store2.filter('age','GuangDong');
 			var comboBox = new Ext.form.ComboBox({
-				id: 'age',
+				id: 'province',
 				renderTo: 'test',
 				fieldLabel: 'Age',
-				emptyText: 'Choose your age',
+				emptyText: 'Choose province',
 				mode: 'remote',
 				triggerAction: 'all',
 				store: store,
 				valueField: 'age',
 				displayField: 'description',
-				pageSize: 3
-			}); 
+				pageSize: 3,
+
+			});
+			var comboBox2 = new Ext.form.ComboBox({
+				id: 'city',
+				renderTo: 'test',
+				fieldLabel: 'Age',
+				emptyText: 'Choose city',
+				mode: 'remote',
+				triggerAction: 'all',
+				store: store2,
+				valueField: 'age',
+				displayField: 'description',
+				pageSize: 3,
+				listeners: {
+					'expand': function(){
+;						store2.clearFilter();
+						store2.filterBy(function(record){
+							return record.get("age") === Ext.getCmp('province').getValue();
+						});
+					}
+				}
+
+			});
 	    });
 	</script>
 </head>

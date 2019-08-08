@@ -28,6 +28,7 @@ Ext.onReady(function(){
         title: 'grid',
         viewConfig: {forceFit: true},
         store: store,
+        // autoHeight: true,
         columns: [
             {header:'id', dataIndex: 'id'},
             {header:'name', dataIndex:'name'},
@@ -42,6 +43,7 @@ Ext.onReady(function(){
 
     var viewport = new Ext.Viewport({
         layout: 'fit',
+
         items: [grid]
     });
 });

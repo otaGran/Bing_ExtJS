@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="ext-all.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var viewport = new Ext.Viewport({
+                layout: 'border',
+                items: [
+                    {region:'north',html:'north',height:100,split:true,collapsible:true},
+                    {region:'west',html:'west',width:100,collapsible:true},
+                    {region:'center',html:'center'},
+                    {region:'east',html:'east'},
+                    {region:'south',html:'south'}
+                ]
+            });
+        });
+
+    </script>
+</head>
+<body>
+<script type="text/javascript" src="../shared/examples.js"></script>
+<div id="form" style="margin:20px;"></div>
+</body>
+</html>

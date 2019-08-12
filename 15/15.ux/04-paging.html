@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>ux</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all-debug.js"></script>
+    <link rel="stylesheet" type="text/css" href="../shared/examples.css" />
+
+    <script type="text/javascript" src="../ux/PagingMemoryProxy.js"></script>
+    <script type="text/javascript" src="PageSizePlugin.js"></script>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var data = [
+        ['name1', 'value1'],
+        ['name2', 'value2'],
+        ['name3', 'value3'],
+        ['name4', 'value4'],
+        ['name5', 'value5'],
+        ['name6', 'value6'],
+        ['name7', 'value7'],
+        ['name8', 'value8'],
+        ['name9', 'value9'],
+        ['name10', 'value10'],
+        ['name11', 'value11'],
+        ['name12', 'value12'],
+        ['name13', 'value13'],
+        ['name14', 'value14'],
+        ['name15', 'value15'],
+        ['name16', 'value16'],
+        ['name17', 'value17'],
+        ['name18', 'value18'],
+        ['name19', 'value19'],
+        ['name20', 'value20']
+    ];
+
+    var store = new Ext.data.ArrayStore({
+        proxy: new Ext.ux.data.PagingMemoryProxy(data),
+        fields: ['name', 'value']
+    });
+
+    var grid = new Ext.grid.GridPanel({
+        autoHeight: true,
+        store: store,
+        columns: [{
+            header: 'name',
+            dataIndex: 'name'
+        }, {
+            header: 'value',
+            dataIndex: 'value'
+        }],
+        bbar: new Ext.PagingToolbar({
+            store: store,
+            pageSize: 10,
+            plugins: new Ext.ux.PageSizePlugin()
+        }),
+        renderTo: 'container'
+    });
+
+    store.load({params: {start: 0, limit: 10}});
+});
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../shared/examples.js"></script>
+    <div id="container"></div>
+  </body>
+</html>

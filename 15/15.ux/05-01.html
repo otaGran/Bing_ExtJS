@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css">
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all.js"></script>
+    <script type="text/javascript" src="UploadDialog/UploadDialog.js"></script>
+    <link rel="stylesheet" type="text/css" href="UploadDialog/css/Ext.ux.UploadDialog.css">
+    <script type="text/javascript">
+Ext.onReady(function(){
+    Ext.QuickTips.init() ;
+
+    var dialog = new Ext.ux.UploadDialog.Dialog({
+        url: '05_01.jsp',
+        reset_on_hide: false,
+        allow_close_on_upload: true,
+        upload_autostart: false
+    });
+
+    dialog.show('show-button');
+}) ;
+    </script>
+  </head>
+  <body>
+    <button id='show-button'>show</button>
+  </body>
+</html>

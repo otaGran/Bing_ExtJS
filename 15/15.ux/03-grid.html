@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>ux</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all-debug.js"></script>
+    <link rel="stylesheet" type="text/css" href="../shared/examples.css" />
+    <script type="text/javascript">
+Ext.ux.MainGrid = Ext.extend(Ext.grid.GridPanel, {
+    initComponent: function() {
+
+        this.autoHeight = true;
+
+        this.tbar = [{
+            text: 'create'
+        }, {
+            text: 'edit'
+        }, {
+            text: 'remove'
+        }];
+
+        this.store = new Ext.data.ArrayStore({
+            autoLoad: true,
+            proxy: new Ext.data.MemoryProxy(this.data),
+            fields: this.fields
+        });
+
+        this.columns = [];
+        for (var i = 0; i < this.fields.length; i++) {
+            this.columns.push({
+                header: this.fields[i],
+                dataIndex: this.fields[i]
+            });
+        }
+
+        Ext.ux.MainGrid.superclass.initComponent.call(this);
+    }
+});
+
+
+Ext.onReady(function() {
+
+    var data = [
+        ['name1', 'value1'],
+        ['name2', 'value2'],
+        ['name3', 'value3'],
+        ['name4', 'value4'],
+        ['name5', 'value5'],
+        ['name6', 'value6'],
+        ['name7', 'value7']
+    ];
+
+    var grid = new Ext.ux.MainGrid({
+        data: data,
+        fields: ['name', 'value'],
+        renderTo: 'container'
+    });
+});
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../shared/examples.js"></script>
+    <div id="container"></div>
+  </body>
+</html>

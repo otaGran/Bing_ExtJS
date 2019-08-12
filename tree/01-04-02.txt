@@ -1,0 +1,13 @@
+[
+    {text:'Fruits',checked:false,children:[
+        {text:'Apples',leaf:true,checked:false},
+        {text:'Grapes',leaf:true,checked:false},
+        {text:'Pear',leaf:true,checked:false},
+        {text:'Strawberry',leaf:true,checked:false},
+        {text:'WaterMelon',leaf:true,checked:false}
+    ]},
+    {text:'Vegetables',checked:false,children:[
+        {text:'Tomato',leaf:true,checked:false},
+        {text:'Patato',leaf:true,checked:false},
+     ]}
+]

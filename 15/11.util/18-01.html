@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all-debug.js"></script>
+
+    <script type="text/javascript" src="../ux/Portal.js"></script>
+    <script type="text/javascript" src="../ux/PortalColumn.js"></script>
+    <script type="text/javascript" src="../ux/Portlet.js"></script>
+
+    <script type="text/javascript" src="../portal/sample-grid.js"></script>
+    <link rel="stylesheet" type="text/css" href="../portal/portal.css">
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var viewport = new Ext.Viewport({
+        layout: 'border',
+        items: [{
+            region: 'west',
+            width: 200,
+            layout: 'accordion',
+            items: [{
+                title: 'task1',
+                html: 'task1'
+            }, {
+                title: 'task2',
+                html: 'task2'
+            }]
+        }, {
+            region: 'center',
+            xtype: 'portal',
+            items: [{
+                columnWidth: 0.33,
+                style:'padding:10px 0 10px 10px',
+                items:[{
+                    title: 'portal1',
+                    height: 200,
+                    html: 'portal1'
+                }]
+            }, {
+                columnWidth: 0.33,
+                style:'padding:10px 0 10px 10px',
+                items:[{
+                    title: 'portal2',
+                    height: 200,
+                    html: 'portal2'
+                }]
+            }, {
+                columnWidth: 0.33,
+                style:'padding:10px 0 10px 10px',
+                items:[{
+                    title: 'portal3',
+                    height: 200,
+                    html: 'portal3'
+                }]
+            }]
+        }]
+    });
+});
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../shared/examples.js"></script>
+  </body>
+</html>

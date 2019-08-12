@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+    var sayHi = function(name) {
+        alert('Hi, ' + name);
+    }
+
+    new Ext.Button({
+        text: 'Say Hi',
+        renderTo: Ext.getBody(),
+        handler: sayHi.createCallback('Fred')
+    });
+
+    var sayHi = function(name) {
+        alert('Hi, ' + name + '. You clicked the "' + this.text + '" button.');
+    }
+
+    var btn = new Ext.Button({
+        text: 'Say Hi',
+        renderTo: Ext.getBody()
+    });
+    btn.on('click', sayHi.createDelegate(btn, ['Fred']));
+
+    var sayHi = function(name) {
+        alert('Hi, ' + name);
+    }
+
+    sayHi('Fred'); // 提示"Hi, Fred"
+
+    var sayHiToFriend = sayHi.createInterceptor(function(name) {
+        return name == 'Brian';
+    });
+
+    sayHiToFriend('Fred');  // 没有提示
+    sayHiToFriend('Brian'); // 提示 "Hi, Brian"
+
+    var sayHi = function(name) {
+        alert('Hi, ' + name);
+    }
+
+    sayHi('Fred'); // 提示 "Hi, Fred"
+
+    var sayGoodbye = sayHi.createSequence(function(name) {
+        alert('Bye, ' + name);
+    });
+
+    sayGoodbye('Fred'); // 提示两次
+
+    sayHi('Fred');
+
+    sayHi.defer(2000, this, ['Fred']);
+
+    (function() {
+        alert('Anonymous');
+    }).defer(100);
+});
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../shared/examples.js"></script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+
+    <script type="text/javascript" src="../../ux/gridfilters/menu/RangeMenu.js"></script>
+    <script type="text/javascript" src="../../ux/gridfilters/menu/ListMenu.js"></script>
+
+    <script type="text/javascript" src="../../ux/gridfilters/GridFilters.js"></script>
+    <script type="text/javascript" src="../../ux/gridfilters/filter/Filter.js"></script>
+    <script type="text/javascript" src="../../ux/gridfilters/filter/StringFilter.js"></script>
+    <script type="text/javascript" src="../../ux/gridfilters/filter/DateFilter.js"></script>
+    <script type="text/javascript" src="../../ux/gridfilters/filter/ListFilter.js"></script>
+    <script type="text/javascript" src="../../ux/gridfilters/filter/NumericFilter.js"></script>
+    <script type="text/javascript" src="../../ux/gridfilters/filter/BooleanFilter.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ux/gridfilters/css/GridFilters.css" />
+    <link rel="stylesheet" type="text/css" href="../../ux/gridfilters/css/RangeMenu.css" />
+
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var store = new Ext.data.JsonStore({
+        autoDestroy: true,
+        url: 'grid-filter.json',
+        remoteSort: false,
+        sortInfo: {
+            field: 'company',
+            direction: 'ASC'
+        },
+        storeId: 'myStore',
+        idProperty: 'id',
+        root: 'data',
+        totalProperty: 'total',
+        fields: [{
+            name: 'id'
+        }, {
+            name: 'company'
+        }, {
+            name: 'price',
+            type: 'float'
+        }, {
+            name: 'date',
+            type: 'date',
+            dateFormat: 'Y-m-d H:i:s'
+        }, {
+            name: 'visible',
+            type: 'boolean'
+        }, {
+            name: 'size'
+        }]
+    });
+
+    var filters = new Ext.ux.grid.GridFilters({
+        filters: [{
+            type: 'numeric',
+            dataIndex: 'id'
+        }, {
+            type: 'string',
+            dataIndex: 'company',
+            disabled: true
+        }, {
+            type: 'numeric',
+            dataIndex: 'price'
+        }, {
+            type: 'date',
+            dataIndex: 'date'
+        }, {
+            type: 'list',
+            dataIndex: 'size',
+            options: ['small', 'medium', 'large', 'extra large'],
+            phpMode: true
+        }, {
+            type: 'boolean',
+            dataIndex: 'visible'
+        }]
+    });
+
+    var grid = new Ext.grid.GridPanel({
+        width: 500,
+        height: 300,
+        border: true,
+        store: store,
+        renderTo: 'grid',
+        colModel: new Ext.grid.ColumnModel({
+            columns: [{
+                dataIndex: 'id',
+                header: 'Id',
+                filterable: true
+            }, {
+                dataIndex: 'company',
+                header: 'Company',
+                id: 'company',
+                filter: {
+                    type: 'string'
+                }
+            }, {
+                dataIndex: 'price',
+                header: 'Price',
+                filter: {
+                }
+            }, {
+                dataIndex: 'size',
+                header: 'Size',
+                filter: {
+                    type: 'list',
+                    options: ['small', 'medium', 'large', 'extra large']
+                }
+            }, {
+                dataIndex: 'date',
+                header: 'Date',
+                renderer: Ext.util.Format.dateRenderer('m/d/Y'),
+                filter: {
+                }
+            }, {
+                dataIndex: 'visible',
+                header: 'Visible',
+                filter: {
+                }
+            }],
+            defaults: {
+                sortable: true
+            }
+        }),
+        loadMask: true,
+        plugins: [filters],
+        autoExpandColumn: 'company',
+        bbar: new Ext.PagingToolbar({
+            store: store,
+            pageSize: 50,
+            plugins: [filters]
+        })
+    });
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

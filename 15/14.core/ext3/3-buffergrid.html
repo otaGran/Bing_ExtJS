@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/BufferView.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var data = function() {
+        var array = [];
+        for (var i = 0; i < 1000; i++) {
+            array.push([i, 'name' + 1, i % 2 == 0 ? 'male' : 'female', i % 2 == 0]);
+        }
+        return array;
+    }();
+
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.MemoryProxy(data),
+        reader: new Ext.data.ArrayReader({
+            fields: ['id', 'name', 'sex', 'status']
+        })
+
+    });
+    var grid = new Ext.grid.GridPanel({
+        title: '缓冲式表格视图',
+        width: 450,
+        height: 200,
+        store: store,
+        columns: [{
+            header: 'id',
+            dataIndex: 'id',
+            editor: {
+                xtype: 'textfield'
+            }
+        }, {
+            header: 'name',
+            dataIndex: 'name'
+        }, {
+            header: 'sex',
+            dataIndex: 'sex'
+        }, {
+            header: 'status',
+            dataIndex: 'status'
+        }],
+        renderTo: 'grid',
+
+        view: new Ext.ux.grid.BufferView({
+            rowHeight: 20,
+            scrollDelay: false
+        })
+    });
+    store.load();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

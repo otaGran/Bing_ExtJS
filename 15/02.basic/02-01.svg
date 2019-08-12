@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="950" height="1000" viewBox="0 0 950 1000" style="font-weight:bold;font-family:arial,'lucida console',sans-serif,黑体;font-size:14px;">
+    <defs>
+        <linearGradient id="line" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="20%" stop-color="#88AAEE"/>
+            <stop offset="100%" stop-color="#224499"/>
+        </linearGradient>
+        <marker id="arrow" markerWidth="10" markerHeight="8" refX="4" refY="4" orient="auto">
+            <path d="M0,0 8,4 0,8Z" fill="white" stroke="black"/>
+        </marker>
+        <g id="bg">
+            <rect x="0" y="0" width="10" height="10" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+        </g>
+    </defs>
+
+    <rect x="0" y="0" width="950" height="1000" fill="white"/>
+
+    <g transform="translate(300,10)">
+        <rect x="0" y="0" width="130" height="25" rx="5" ry="5"
+            stroke="#223388" stroke-width="2" fill="url(#line)"/>
+        <text x="10" y="17" fill="white">Ext.Component</text>
+        <line x1="65" y1="25" x2="65" y2="45" stroke="black"/>
+        <line x1="-200" y1="45" x2="400" y2="45" stroke="black"/>
+    </g>
+
+    <!--=================================================== Ext.BoxComponent start -->
+    <g transform="translate(10,80)">
+        <g transform="translate(0,0)">
+            <line x1="90" y1="-25" x2="90" y2="-5" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="155" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.BoxComponent</text>
+            <line x1="5" y1="25" x2="5" y2="850" stroke="black"/>
+        </g>
+
+        <!--=============================================== Ext.Button start -->
+        <g transform="translate(20,30)">
+            <g transform="translate(0,0)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="95" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.Button</text>
+                <line x1="5" y1="25" x2="5" y2="40" stroke="black"/>
+                <line x1="5" y1="40" x2="15" y2="40" stroke="black" marker-end="url(#arrow)"/>
+            </g>
+            <g transform="translate(20,30)">
+                <rect x="0" y="0" width="120" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.SplitButton</text>
+                <line x1="5" y1="25" x2="5" y2="40" stroke="black"/>
+                <line x1="5" y1="40" x2="15" y2="40" stroke="black" marker-end="url(#arrow)"/>
+            </g>
+           <g transform="translate(40,60)">
+                <rect x="0" y="0" width="130" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.CycleButton</text>
+            </g>
+        </g>
+        <!--=============================================== Ext.Button end -->
+
+        <!--=============================================== Ext.Container start -->
+        <g transform="translate(0,90)">
+            <g transform="translate(20,30)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="120" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.Container</text>
+                <line x1="5" y1="25" x2="5" y2="370" stroke="black"/>
+            </g>
+            <g transform="translate(40,60)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="90" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.Panel</text>
+                <line x1="5" y1="25" x2="5" y2="220" stroke="black"/>
+            </g>
+            <g transform="translate(60,90)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="110" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.TabPanel</text>
+            </g>
+            <g transform="translate(60,120)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="70" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.Tip</text>
+            </g>
+            <g transform="translate(60,150)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="100" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.Window</text>
+            </g>
+            <g transform="translate(60,180)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="140" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.FieldSet</text>
+            </g>
+            <g transform="translate(60,210)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="155" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.FormPanel</text>
+            </g>
+            <g transform="translate(60,240)">
+                <g transform="translate(0,0)">
+                    <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                    <rect x="0" y="0" width="150" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.grid.GridPanel</text>
+                </g>
+                <g transform="translate(165,0)">
+                    <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                    <rect x="0" y="0" width="185" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.grid.EditorGridPanel</text>
+                </g>
+                <g transform="translate(365,0)">
+                    <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                    <rect x="0" y="0" width="170" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.grid.PropertyGrid</text>
+                </g>
+            </g>
+            <g transform="translate(60,270)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="150" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.tree.TreePanel</text>
+            </g>
+
+            <!--=============================================== Ext.Toolbar end -->
+            <g transform="translate(20,0)">
+                <g transform="translate(20,300)">
+                    <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                    <rect x="0" y="0" width="100" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.Toolbar</text>
+                    <line x1="5" y1="25" x2="5" y2="40" stroke="black"/>
+                </g>
+                <g transform="translate(40,330)">
+                    <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                    <rect x="0" y="0" width="145" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.PagingToolbar</text>
+                </g>
+            </g>
+            <!--=============================================== Ext.Toolbar end -->
+
+            <!--=============================================== Ext.Viewport start -->
+            <g transform="translate(40,360)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="110" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.Viewport</text>
+            </g>
+            <!--=============================================== Ext.Viewport start -->
+
+            <!--=============================================== Ext.Menu start -->
+            <g transform="translate(40,390)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="100" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.Menu</text>
+            </g>
+            <!--=============================================== Ext.Menu start -->
+
+        </g>
+        <!--=============================================== Ext.Container end -->
+
+        <!--=============================================== Ext.DataView start -->
+        <g transform="translate(20,510)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="110" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.DataView</text>
+        </g>
+        <!--=============================================== Ext.DataView end -->
+
+        <!--=============================================== Ext.FlashComponent start -->
+        <g transform="translate(20,540)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="165" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.FlashComponent</text>
+        </g>
+        <!--=============================================== Ext.FlashComponent end -->
+
+        <!--=============================================== Ext.ProgressBar start -->
+        <g transform="translate(20,570)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="130" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.ProgressBar</text>
+        </g>
+        <!--=============================================== Ext.ProgressBar end -->
+
+        <!--=============================================== Ext.Slider start -->
+        <g transform="translate(20,600)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="90" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.Slider</text>
+        </g>
+        <!--=============================================== Ext.Slider end -->
+
+        <!--=============================================== Ext.Spacer start -->
+        <g transform="translate(20,630)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="100" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.Spacer</text>
+        </g>
+        <!--=============================================== Ext.Spacer end -->
+
+        <!--=============================================== Ext.Toolbar.Item start -->
+        <g transform="translate(20,660)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="145" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.Toolbar.Item</text>
+        </g>
+        <!--=============================================== Ext.Toolbar.Item start -->
+
+        <g transform="translate(0,120)">
+            <g transform="translate(20,570)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="120" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.Field</text>
+                <line x1="5" y1="25" x2="5" y2="130" stroke="black"/>
+                <line x1="5" y1="40" x2="15" y2="40" stroke="black" marker-end="url(#arrow)"/>
+                <line x1="5" y1="70" x2="15" y2="70" stroke="black" marker-end="url(#arrow)"/>
+                <line x1="5" y1="100" x2="15" y2="100" stroke="black" marker-end="url(#arrow)"/>
+                <line x1="5" y1="130" x2="15" y2="130" stroke="black" marker-end="url(#arrow)"/>
+            </g>
+            <g transform="translate(40,570)">
+                <g transform="translate(0,30)">
+                    <rect x="0" y="0" width="145" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.form.TextField</text>
+                    <line x1="145" y1="12" x2="150" y2="12" stroke="black"/>
+                    <line x1="150" y1="-20" x2="150" y2="40" stroke="black"/>
+                    <line x1="150" y1="-20" x2="160" y2="-20" stroke="black" marker-end="url(#arrow)"/>
+                    <line x1="150" y1="12" x2="160" y2="12" stroke="black" marker-end="url(#arrow)"/>
+                    <line x1="150" y1="40" x2="160" y2="40" stroke="black" marker-end="url(#arrow)"/>
+                </g>
+                <g transform="translate(165,0)">
+                    <rect x="0" y="0" width="170" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.form.NumberField</text>
+                </g>
+                <g transform="translate(165,15)">
+                    <g transform="translate(0,15)">
+                        <rect x="0" y="0" width="170" height="25" rx="5" ry="5"
+                            stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                        <text x="10" y="17" fill="white">Ext.form.TriggerField</text>
+                        <line x1="170" y1="12" x2="175" y2="12" stroke="black"/>
+                        <line x1="175" y1="-5" x2="175" y2="30" stroke="black"/>
+                        <line x1="175" y1="-5" x2="185" y2="-5" stroke="black" marker-end="url(#arrow)"/>
+                        <line x1="175" y1="30" x2="185" y2="30" stroke="black" marker-end="url(#arrow)"/>
+                    </g>
+                    <g transform="translate(190,0)">
+                        <g transform="translate(0,0)">
+                            <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                            <text x="10" y="17" fill="white">Ext.form.ComboBox</text>
+                            <line x1="160" y1="12" x2="175" y2="12" stroke="black" marker-end="url(#arrow)"/>
+                        </g>
+                        <g transform="translate(180,0)">
+                            <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                            <text x="10" y="17" fill="white">Ext.form.TimerField</text>
+                        </g>
+                    </g>
+                    <g transform="translate(190,30)">
+                        <rect x="0" y="0" width="150" height="25" rx="5" ry="5"
+                            stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                        <text x="10" y="17" fill="white">Ext.form.DateField</text>
+                    </g>
+                </g>
+                <g transform="translate(165,60)">
+                    <rect x="0" y="0" width="145" height="25" rx="5" ry="5"
+                        stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                    <text x="10" y="17" fill="white">Ext.form.TextArea</text>
+                </g>
+            </g>
+            <g transform="translate(40,630)">
+                <rect x="0" y="0" width="130" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.Hidden</text>
+            </g>
+            <g transform="translate(40,660)">
+                <rect x="0" y="0" width="155" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.HtmlEditor</text>
+            </g>
+            <g transform="translate(40,690)">
+                <rect x="0" y="0" width="150" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.CheckBox</text>
+            </g>
+            <g transform="translate(20,720)">
+                <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+                <rect x="0" y="0" width="120" height="25" rx="5" ry="5"
+                    stroke="#223388" stroke-width="2" fill="url(#line)"/>
+                <text x="10" y="17" fill="white">Ext.form.Label</text>
+            </g>
+        </g>
+    </g>
+    <g transform="translate(175,80)">
+        <line x1="60" y1="-25" x2="60" y2="-5" stroke="black" marker-end="url(#arrow)"/>
+        <rect x="0" y="0" width="125" height="25" rx="5" ry="5"
+            stroke="#223388" stroke-width="2" fill="url(#line)"/>
+        <text x="10" y="17" fill="white">Ext.ColorPallete</text>
+    </g>
+    <g transform="translate(315,80)">
+        <line x1="60" y1="-25" x2="60" y2="-5" stroke="black" marker-end="url(#arrow)"/>
+        <rect x="0" y="0" width="125" height="25" rx="5" ry="5"
+            stroke="#223388" stroke-width="2" fill="url(#line)"/>
+        <text x="10" y="17" fill="white">Ext.DatePicker</text>
+    </g>
+    <g transform="translate(450,80)">
+        <g transform="translate(0,0)">
+            <line x1="40" y1="-25" x2="40" y2="-5" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="90" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.Editor</text>
+            <line x1="5" y1="25" x2="5" y2="40" stroke="black"/>
+            <line x1="5" y1="40" x2="15" y2="40" stroke="black" marker-end="url(#arrow)"/>
+        </g>
+        <g transform="translate(20,30)">
+            <rect x="0" y="0" width="150" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.tree.TreeEditor</text>
+        </g>
+    </g>
+    <g transform="translate(630,80)">
+        <g transform="translate(0,0)">
+            <line x1="70" y1="-25" x2="70" y2="-5" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="155" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.menu.BaseItem</text>
+            <line x1="5" y1="25" x2="5" y2="130" stroke="black"/>
+        </g>
+        <g transform="translate(20,30)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="120" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.menu.Item</text>
+            <line x1="5" y1="25" x2="5" y2="40" stroke="black"/>
+        </g>
+        <g transform="translate(40,60)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.menu.CheckItem</text>
+        </g>
+        <g transform="translate(20,90)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="160" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.menu.Separator</text>
+        </g>
+        <g transform="translate(20,120)">
+            <line x1="-15" y1="10" x2="-5" y2="10" stroke="black" marker-end="url(#arrow)"/>
+            <rect x="0" y="0" width="150" height="25" rx="5" ry="5"
+                stroke="#223388" stroke-width="2" fill="url(#line)"/>
+            <text x="10" y="17" fill="white">Ext.menu.TextItem</text>
+        </g>
+    </g>
+</svg>

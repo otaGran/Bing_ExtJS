@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/SliderField.js"></script>
+        <script type="text/javascript" src="../../ux/SliderTip.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+
+    var horizontal = new Ext.Slider({
+        renderTo: 'multi-slider-horizontal',
+        width   : 214,
+        minValue: 0,
+        maxValue: 100,
+        values  : [10, 50, 90],
+        plugins : new Ext.slider.Tip()
+    });
+
+    var vertical = new Ext.Slider({
+        renderTo : 'multi-slider-vertical',
+        vertical : true,
+        height   : 214,
+        minValue: 0,
+        maxValue: 100,
+        values  : [10, 50, 90],
+        plugins : new Ext.slider.Tip()
+    });
+
+    Ext.get('btn').on('click', function() {
+        Ext.Msg.alert('info', horizontal.getValues() + '|' + vertical.getValues());
+    });
+});
+        </script>
+    </head>
+    <body>
+      <div id="multi-slider-horizontal" style="margin:20px;"></div>
+      <div id="multi-slider-vertical" style="margin:20px;"></div>
+
+      <button id="btn">btn</button>
+    </body>
+</html>

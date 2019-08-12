@@ -1,0 +1,71 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <title>11.util</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css" />
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <style type="text/css">
+        .red {
+            background: red;
+        }
+    </style>
+    <script>
+        function queryP() {
+            console.log('123');
+            let array = Ext.query('p');
+            for(let i = 0;i<array.length;i++)
+                Ext.get(array[i]).highlight();
+        }
+        function queryDiv() {
+            console.log('123');
+            let array = Ext.query('html/body/div');
+            for(let i = 0;i<array.length;i++)
+                Ext.get(array[i]).highlight();
+        }
+
+
+        var addByTemplate = function () {
+            let data = {name: 'Tom', age: 11};
+            let tmp = new Ext.Template(
+                '<table><tr>',
+                '<td>I am {name}, {age} years old.</td>',
+                '</tr></table>'
+            );
+            tmp.compile();
+            tmp.append('panel',data);
+            Ext.getCmp('panel').render();
+        }
+        Ext.onReady(function(){
+           var p = new Ext.Panel({
+               title: '123',
+               renderTo: 'test',
+               html: '123',
+               id: 'panel'
+           })
+
+
+        });
+
+    </script>
+</head>
+<body>
+<script type="text/javascript" src="../shared/examples.js"></script>
+<input type="button" value="select('p')" onclick="Ext.select('p').highlight();">
+<input type="button" value="select('div.red')" onclick="Ext.select('div.red').highlight();">
+<input type="button" value="query('p')" onclick="queryP()">
+<input type="button" value="query('html/body/div')" onclick="queryDiv()">
+<input type="button" value="add new div by template" onclick="addByTemplate()">
+<p>p1</p>
+<br>
+<div class="red">div.red1</div>
+<br>
+<p>p2</p>
+<br>
+<div class="red">div.red2</div>
+<br>
+<p>p3</p>
+<br>
+<div id="test"></div>
+</body>
+</html>

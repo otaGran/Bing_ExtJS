@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../grid/multiple-sorting.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var store = new Ext.data.ArrayStore({
+        fields: [
+           {name: 'rating', type: 'int'},
+           {name: 'salary', type: 'float'},
+           {name: 'name'}
+        ]
+    });
+    store.loadData([
+        [1, 10000.1, 'name1'],
+        [2, 11111.1, 'name2'],
+        [2, 2222.2, 'name3'],
+        [3, 44444.4, 'name4'],
+        [3, 55.3, 'name5']
+    ]);
+    var tbar = new Ext.Toolbar({
+        items: ['Sorting order:', '-']
+    });
+    var grid = new Ext.grid.GridPanel({
+        tbar : tbar,
+        store: store,
+
+        columns: [
+            {header: 'Name',   width: 160, sortable: false, dataIndex: 'name',   id:'company'},
+            {header: 'Rating', width: 125, sortable: false, dataIndex: 'rating'},
+            {header: 'Salary', width: 125, sortable: false, dataIndex: 'salary', renderer: 'usMoney'}
+        ],
+        autoExpandColumn: 'company',
+        stripeRows: true,
+
+        height: 200,
+        width : 400,
+        title : '多重排序'
+    });
+
+    tbar.add(createSorterButton({
+        text: 'Rating',
+        sortData: {
+            field: 'rating',
+            direction: 'DESC'
+        }
+    }));
+
+    tbar.add(createSorterButton({
+        text: 'Salary',
+        sortData: {
+            field: 'salary',
+            direction: 'ASC'
+        }
+    }));
+
+    grid.render('grid');
+
+    function doSort() {
+/*
+store.sort([{
+    field: 'rating',
+    direction: 'DESC'
+}, {
+    field: 'salary',
+    direction: 'DESC'
+}]);
+*/
+        store.sort(getSorters(), "ASC");
+    };
+
+    function changeSortDirection(button, changeDirection) {
+        var sortData = button.sortData,
+            iconCls  = button.iconCls;
+
+        if (sortData != undefined) {
+            if (changeDirection !== false) {
+                button.sortData.direction = button.sortData.direction.toggle("ASC", "DESC");
+                button.setIconClass(iconCls.toggle("sort-asc", "sort-desc"));
+            }
+
+            store.clearFilter();
+            doSort();
+        }
+    };
+
+    function getSorters() {
+        var sorters = [];
+
+        Ext.each(tbar.findByType('button'), function(button) {
+            sorters.push(button.sortData);
+        }, this);
+
+        return sorters;
+    }
+
+    function createSorterButton(config) {
+        config = config || {};
+
+        Ext.applyIf(config, {
+            listeners: {
+                click: function(button, e) {
+                    changeSortDirection(button, true);
+                }
+            },
+            iconCls: 'sort-' + config.sortData.direction.toLowerCase()
+        });
+
+        return new Ext.Button(config);
+    };
+});
+        </script>
+    </head>
+    <body>
+      <div id="grid" style="margin:20px;"></div>
+    </body>
+</html>

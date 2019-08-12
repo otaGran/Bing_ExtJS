@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var cm = new Ext.grid.ColumnModel([
+        {header:'编号',dataIndex:'id'},
+        {header:'名称',dataIndex:'name'},
+        {header:'描述',dataIndex:'descn'}
+    ]);
+
+    var store = new Ext.data.JsonStore({
+        url: 'grid.html',
+        fields: ['id', 'name', 'descn']
+    });
+
+    var grid = new Ext.grid.GridPanel({
+        loadMask: true,
+        height: 200,
+        width: 400,
+        renderTo: 'grid',
+        store: store,
+        cm: cm
+    });
+    store.load();
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../shared/examples.js"></script>
+        <div id="grid" style="padding: 20px;"></div>
+    </body>
+</html>

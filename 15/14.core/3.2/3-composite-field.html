@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    new Ext.form.FormPanel({
+        title: '组合表单控件',
+        renderTo: 'docbody',
+        width: 300,
+        items: [{
+            xtype: 'compositefield',
+            fieldLabel: 'Full Name',
+            items: [
+                {xtype: 'textfield', name: 'title',     width: 40},
+                {xtype: 'textfield', name: 'firstName', flex : 1},
+                {xtype: 'textfield', name: 'lastName',  flex : 2}
+            ]
+        }],
+        buttons: [{
+            text: 'submit'
+        }, {
+            text: 'reset'
+        }]
+    });
+});
+        </script>
+    </head>
+    <body>
+      <div id="docbody" style="margin:20px;"></div>
+    </body>
+</html>

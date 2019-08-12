@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+
+            var viewport = new Ext.Viewport({
+                layout:'fit',
+                items:[{
+                    title: 'Table Layout',
+                    layout:'table',
+                    layoutConfig: {
+                        columns: 3,
+                        xtype: 'panel',
+                    },
+                    items: [
+                        {xtype:'panel',title:'123',html:'1aaaaaaaaaaa,1',rowspan:3},
+                        {html:'1aaaaaaaaa,2'},
+                        {html:'1aaaaaaa,3'},
+                        {html:'2,2',colspan:2},
+                        {html:'3,2'},
+                        {html:'3,3'}
+                    ]
+
+                }]
+            });
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div id="form" style="margin:20px;"></div>
+
+
+</body>
+</html>

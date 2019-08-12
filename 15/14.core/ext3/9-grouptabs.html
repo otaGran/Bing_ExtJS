@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/GroupTabPanel.js"></script>
+        <script type="text/javascript" src="../../ux/GroupTab.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../ux/css/GroupTab.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var panel = new Ext.Panel({
+        title: '竖直分组的标签面板',
+        width: 500,
+        height: 200,
+        items: [{
+            xtype: 'grouptabpanel',
+            tabWidth: 80,
+            activeGroup: 0,
+            items: [{
+                mainItem: 0,
+                title: '001',
+                items: [{
+                    title: 'tab 1',
+                    tabTip: 'Tickets tabtip 1',
+                    html: 'This is a group tab panel. this is the #1 tab.'
+                }]
+            }, {
+                mainItem: 0,
+                title: '002',
+                items: [{
+                    title: 'tab 2',
+                    tabTip: 'Tickets tabtip 2',
+                    html: 'This is a group tab panel. this is the #2 tab.'
+                }]
+            }]
+        }],
+        renderTo: 'panel'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="panel" style="margin: 10px;"></div>
+    </body>
+</html>

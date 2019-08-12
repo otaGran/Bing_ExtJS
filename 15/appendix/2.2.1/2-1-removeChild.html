@@ -1,0 +1,24 @@
+<script type="text/javascript">
+removeNode = function(){
+    var d;
+    return function(n){
+        if(n && n.tagName != 'BODY'){
+            d = d || document.createElement('div');
+            d.appendChild(n);
+            d.innerHTML = '';
+        }
+    }
+}();
+
+function test() {
+    var v = '<>';
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(v));
+    v = d.innerHTML;
+    //removeNode(d); // 测试解决内存泄露的情况，可以去掉这行的注释
+    d = null;
+    //alert(v);
+}
+</script>
+
+<button onclick="test()">button</button>

@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/ProgressBarPager.js"></script>
+        <script type="text/javascript" src="../../ux/PagingMemoryProxy.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var store = new Ext.data.Store({
+        proxy: new Ext.data.PagingMemoryProxy([
+            [1, 'name 1', 'male', 'true'],
+            [2, 'name 2', 'female', 'false'],
+            [3, 'name 3', 'male', 'false'],
+            [4, 'name 4', 'female', 'false'],
+            [5, 'name 5', 'male', 'true']
+        ]),
+        reader: new Ext.data.ArrayReader({
+            fields: ['id', 'name', 'sex', 'status']
+        })
+
+    });
+    var grid = new Ext.grid.GridPanel({
+        title: '进度条分页组件',
+        width: 450,
+        height: 200,
+        store: store,
+        columns: [{
+            header: 'id',
+            dataIndex: 'id',
+            editor: {
+                xtype: 'textfield'
+            }
+        }, {
+            header: 'name',
+            dataIndex: 'name'
+        }, {
+            header: 'sex',
+            dataIndex: 'sex'
+        }, {
+            header: 'status',
+            dataIndex: 'status'
+        }],
+        bbar: new Ext.PagingToolbar({
+            pageSize: 3,
+            store: store,
+            displayInfo: true,
+            plugins: new Ext.ux.ProgressBarPager()
+        }),
+        renderTo: 'grid'
+    });
+    store.load({params:{start:0,limit:3}});
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

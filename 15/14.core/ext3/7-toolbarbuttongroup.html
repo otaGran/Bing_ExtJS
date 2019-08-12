@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var panel = new Ext.Panel({
+        title: '工具条中的分组按钮',
+        layout: 'fit',
+        width: 300,
+        height: 200,
+        tbar: new Ext.Toolbar([{
+            xtype: 'buttongroup',
+            items: [{
+                text: 'text1'
+            }, {
+                text: 'text2'
+            }]
+        }, {
+            xtype: 'buttongroup',
+            items: [{
+                text: 'text3'
+            }, {
+                text: 'text4'
+            }]
+        }]),
+        html: 'Toolbar Button Group',
+        renderTo: 'listview'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="listview" style="margin: 10px;"></div>
+    </body>
+</html>

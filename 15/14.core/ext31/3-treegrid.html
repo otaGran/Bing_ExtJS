@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+
+        <script type="text/javascript" src="../../ux/treegrid/TreeGridSorter.js"></script>
+        <script type="text/javascript" src="../../ux/treegrid/TreeGridColumnResizer.js"></script>
+        <script type="text/javascript" src="../../ux/treegrid/TreeGridNodeUI.js"></script>
+        <script type="text/javascript" src="../../ux/treegrid/TreeGridLoader.js"></script>
+        <script type="text/javascript" src="../../ux/treegrid/TreeGridColumns.js"></script>
+        <script type="text/javascript" src="../../ux/treegrid/TreeGrid.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../ux/treegrid/treegrid.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var tree = new Ext.ux.tree.TreeGrid({
+        title: '树形表格',
+        width: 500,
+        height: 300,
+        renderTo: 'grid',
+        enableDD: true,
+
+        columns:[{
+            header: 'Task',
+            dataIndex: 'task',
+            width: 230
+        },{
+            header: 'Duration',
+            width: 100,
+            dataIndex: 'duration',
+            align: 'center'
+        },{
+            header: 'Assigned To',
+            width: 150,
+            dataIndex: 'user'
+        }],
+
+        dataUrl: 'treegrid-data.json'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

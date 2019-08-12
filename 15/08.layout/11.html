@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../ext-all.js"></script>
+
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var panel = new Ext.Panel({
+        title: 'HBox',
+        width: 400,
+        height: 200,
+        renderTo: 'grid',
+        layout: {
+            type:'hbox',
+            padding:'5',
+            align:'stretch'
+        },
+        defaults:{margins:'0 0 5 0'},
+        items:[{
+            xtype:'button',
+            text: 'Button 1',
+            flex:1
+        },{
+            xtype:'button',
+            text: 'Button 2',
+            flex:1
+        },{
+            xtype:'button',
+            text: 'Button 3',
+            flex:1
+        },{
+            xtype:'button',
+            text: 'Button 4',
+            flex:3
+        }]
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

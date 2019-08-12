@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/TabScrollerMenu.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../tabs/tab-scroller-menu.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var scrollerMenu = new Ext.ux.TabScrollerMenu({
+        maxText  : 15,
+        pageSize : 5
+    });
+
+    var tabs = new Ext.TabPanel({
+        height: 200,
+        width: 400,
+        activeTab: 0,
+        enableTabScroll: true,
+        resizeTabs: true,
+        minTabWidth: 75,
+        frame: true,
+        plugins: [scrollerMenu],
+        items: [{
+            title : '第一个tab'
+        }],
+        renderTo: 'tabs'
+    });
+
+    (function() {
+        for (var i = 0; i < 22; i++) {
+            tabs.add({
+                title: 'tab-' + i,
+                html: 'tab html ' + i
+            });
+        }
+    }).defer(1000);
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="tabs" style="margin: 10px;"></div>
+    </body>
+</html>

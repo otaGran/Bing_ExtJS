@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+
+            var tree = new Ext.tree.TreePanel({
+                el: 'tree'
+            });
+            var root = new Ext.tree.TreeNode({text:'plant', checked: false});
+            var node1 = new Ext.tree.TreeNode({text:'fruits', checked: false});
+            var node4 = new Ext.tree.TreeNode({text:'Vegetables', checked: false});
+            var Apple = new Ext.tree.TreeNode({text:'Apple', checked: false});
+            var Grapes = new Ext.tree.TreeNode({text:'Grapes', checked: false});
+            var Pear = new Ext.tree.TreeNode({text:'Pear', checked: false});
+            var Strawberry = new Ext.tree.TreeNode({text:'Strawberry', checked: false});
+            var WaterMelon = new Ext.tree.TreeNode({text:'WaterMelon', checked: false});
+            var node3 = new Ext.tree.TreeNode({text:'tomato', checked: false});
+
+            root.appendChild(node1);
+            root.appendChild(node4);
+            node4.appendChild(node3);
+            node1.appendChild(Apple);
+            node1.appendChild(Grapes);
+            node1.appendChild(Pear);
+            node1.appendChild(Strawberry);
+            node1.appendChild(WaterMelon);
+
+            tree.setRootNode(root);
+            tree.render();
+
+            root.expand(true, true);
+
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div id="tree" style="height: 300px;" ></div>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/RowEditor.js"></script>
+        <link rel="stylesheet" type="text/css" href="roweditorgrid.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var grid = new Ext.grid.GridPanel({
+        title: ' 行编辑器',
+        width: 450,
+        height: 200,
+        plugins: [new Ext.ux.grid.RowEditor()],
+        store: new Ext.data.SimpleStore({
+            data: [
+                [1, 'name 1', 'male', 'true'],
+                [2, 'name 2', 'female', 'false'],
+                [3, 'name 3', 'male', 'false'],
+                [4, 'name 4', 'female', 'false'],
+                [5, 'name 5', 'male', 'true']
+            ],
+            fields: ['id', 'name', 'sex', 'status']
+        }),
+        columns: [{
+            header: 'id',
+            dataIndex: 'id',
+            editor: {
+                xtype: 'textfield'
+            }
+        }, {
+            header: 'name',
+            dataIndex: 'name',
+            editor: {
+                xtype: 'textfield'
+            }
+        }, {
+            header: 'sex',
+            dataIndex: 'sex',
+            editor: {
+                xtype: 'textfield'
+            }
+        }, {
+            header: 'status',
+            dataIndex: 'status',
+            editor: {
+                xtype: 'checkbox'
+            }
+        }],
+        renderTo: 'grid'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

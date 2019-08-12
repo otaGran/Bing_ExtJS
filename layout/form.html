@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function(){
+            var viewport = new Ext.Viewport({
+                layout:'fit',
+                items:[{
+                    xtype: 'form',
+                    title: '信息',
+                    labelAlign: 'right',
+                    labelWidth: 120,
+                    labelPad: 10,
+                    frame: true,
+                    defaultType: 'textfield',
+                    items: [{
+                        fieldLabel: '名称',
+                        name: 'name',
+                        anchor: '50% 10%'
+                    }, {
+                        fieldLabel: '生日',
+                        name: 'birthday',
+                        xtype: 'datefield',
+                        anchor: '100%'
+                    },{
+                        fieldLabel: '备注',
+                        name: 'desc',
+                        xtype: 'textarea',
+                        anchor: '50% -200'
+                    }]
+                }]
+            });
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div id="form" style="margin:20px;"></div>
+
+
+</body>
+</html>

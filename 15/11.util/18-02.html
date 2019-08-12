@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all-debug.js"></script>
+
+    <script type="text/javascript" src="../ux/Portal.js"></script>
+    <script type="text/javascript" src="../ux/PortalColumn.js"></script>
+    <script type="text/javascript" src="../ux/Portlet.js"></script>
+
+    <script type="text/javascript" src="../portal/sample-grid.js"></script>
+    <link rel="stylesheet" type="text/css" href="../portal/portal.css">
+    <title>11.util</title>
+    <script type="text/javascript">
+Ext.onReady(function() {
+
+    var grid = new Ext.grid.GridPanel({
+        store: new Ext.data.SimpleStore({
+            data: [
+                ['1','name1'],
+                ['2','name2'],
+                ['3','name3'],
+                ['4','name4'],
+                ['5','name5']
+            ],
+            fields: ['id', 'name']
+        }),
+        columns: [
+            {header:'编号',dataIndex:'id',sortable:true},
+            {header:'名称',dataIndex:'name'}
+        ]
+    });
+
+    var tree = new Ext.tree.TreePanel({
+        loader: new Ext.tree.TreeLoader(),
+        root: new Ext.tree.AsyncTreeNode({
+            text: 'root node',
+            children: [
+                {text: 'Leaf No. 1',leaf: true},
+                {text: 'Leaf No. 2',leaf: true}
+            ]
+        })
+    });
+
+    var form = new Ext.form.FormPanel({
+        labelWidth: 70,
+        labelAlign: 'right',
+        defaultType: 'textfield',
+        items: [{
+            fieldLabel: 'name'
+        }, {
+            fieldLabel: 'text'
+        }, {
+            fieldLabel: 'other'
+        }]
+    });
+
+    var viewport = new Ext.Viewport({
+        layout: 'border',
+        items: [{
+            region: 'west',
+            width: 200,
+            layout: 'accordion',
+            items: [{
+                title: 'task1',
+                html: 'task1'
+            }, {
+                title: 'task2',
+                html: 'task2'
+            }]
+        }, {
+            region: 'center',
+            xtype: 'portal',
+            items: [{
+                columnWidth: 0.33,
+                style:'padding:10px 0 10px 10px',
+                items:[{
+                    title: 'portal1',
+                    height: 200,
+                    layout: 'fit',
+                    items: [grid]
+                }]
+            }, {
+                columnWidth: 0.33,
+                style:'padding:10px 0 10px 10px',
+                items:[{
+                    title: 'portal2',
+                    height: 200,
+                    layout: 'fit',
+                    items: [tree]
+                }]
+            }, {
+                columnWidth: 0.33,
+                style:'padding:10px 0 10px 10px',
+                items:[{
+                    title: 'portal3',
+                    height: 200,
+                    layout: 'fit',
+                    items: [form]
+                }]
+            }]
+        }]
+    });
+});
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../shared/examples.js"></script>
+  </body>
+</html>

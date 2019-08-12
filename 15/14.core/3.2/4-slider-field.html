@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/SliderField.js"></script>
+        <script type="text/javascript" src="../../ux/SliderTip.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function() {
+    var form = new Ext.form.FormPanel({
+        width : 400,
+        height: 160,
+        title : '滑动条表单控件',
+
+        bodyStyle  : 'padding: 10px;',
+        renderTo   : 'container',
+        defaultType: 'sliderfield',
+        buttonAlign: 'left',
+
+        defaults: {
+            anchor: '95%',
+            tipText: function(thumb){
+                return String(thumb.value) + '%';
+            }
+        },
+        items: [{
+            fieldLabel: 'Sound Effects',
+            value: 50,
+            name: 'fx'
+        },{
+            fieldLabel: 'Ambient Sounds',
+            value: 80,
+            name: 'ambient'
+        },{
+            fieldLabel: 'Interface Sounds',
+            value: 25,
+            name: 'iface'
+        }],
+        buttons: [{
+            text: 'submit'
+        }, {
+            text: 'reset'
+        }]
+    });
+});
+        </script>
+    </head>
+    <body>
+      <div id="container" style="margin:20px;"></div>
+    </body>
+</html>

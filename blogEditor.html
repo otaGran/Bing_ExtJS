@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css">
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <Script>
+        Ext.onReady(function () {
+
+            var blogEditor = new Ext.FormPanel({
+                title: 'blogEditor',
+
+                layout: 'form',
+                items: [{
+                    xtype: 'toolbar',
+                    items: [{
+                        text: 'Edit',
+                        menu: [{
+                            text: 'Reset',
+                            handler: function () {
+                                Ext.getCmp('ReplyMessage').setValue('');
+                            }
+                        }]
+
+
+                    }, {
+                        text: 'Insert',
+                        menu: [{
+                            text: 'Table',
+                            handler: function () {
+                                Ext.getCmp('ReplyMessage').setValue('');
+                            }
+                        }]
+
+
+                    }]
+                }, {
+                    xtype: 'textarea',
+                    id: 'ReplyMessage',
+                    fieldLabel: 'Editor',
+                    enableKeyEvents:true,
+                    anchor: '100%',
+                    listeners: {
+                        'keydown': function (t,e) {
+                            console.log('123');
+                            if (Ext.getCmp('ReplyMessage').getValue() !== '')
+                                Ext.getCmp('submit').enable();
+                            else
+                                Ext.getCmp('submit').disable();
+                        }
+                    }
+                }],
+                buttons: [{
+                    text: 'Reply',
+                    id: 'submit',
+                    disabled: true,
+                    handler: function () {
+                        Ext.MessageBox.wait('submit in progress', 'submit', {
+                            interval: 100, //bar will move fast!
+                            duration: 2000,
+                            increment: 15,
+                            id: 'status',
+                            text: 'Updating...',
+                            scope: this,
+                            fn: function () {
+                                Ext.MessageBox.hide();
+                                Ext.MessageBox.alert('submit success');
+                            }
+                        });
+                    }
+
+                }]
+
+
+            });
+
+            var window = new Ext.Window({
+                hidden: false,
+                renderTo: 'blogEditor',
+
+                items:[blogEditor],
+                width:400,
+                height: 500
+            });
+
+        });
+    </Script>
+</head>
+<body>
+
+<div id="blogEditor"></div>
+</body>
+</html>

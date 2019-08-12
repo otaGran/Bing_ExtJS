@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/TabScrollerMenu.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../tabs/tab-scroller-menu.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var listView = new Ext.ListView({
+        store: new Ext.data.SimpleStore({
+            data: [
+                ['name', '2009-04-01 10:10:10', 1000],
+                ['name', '2009-04-01 10:10:10', 1000]
+            ],
+            fields: ['name', {
+                name: 'lastmod',
+                type: 'date',
+                dateFormat: 'Y-m-d H:i:s'
+            }, 'size']
+        }),
+        multiSelect: true,
+        emptyText: 'No data to display',
+        reserveScrollOffset: true,
+
+        columns: [{
+            header: 'File',
+            dataIndex: 'name'
+        },{
+            header: 'Last Modified',
+            dataIndex: 'lastmod',
+            tpl: '{lastmod:date("m-d h:i a")}'
+        },{
+            header: 'Size',
+            dataIndex: 'size',
+            tpl: '{size:fileSize}',
+            align: 'right'
+        }]
+    });
+    var panel = new Ext.Panel({
+        title: '列表视图',
+        layout: 'fit',
+        width: 300,
+        height: 200,
+        items: [listView],
+        renderTo: 'listview'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="listview" style="margin: 10px;"></div>
+    </body>
+</html>

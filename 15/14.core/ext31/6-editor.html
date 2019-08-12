@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+
+        <script type="text/javascript" src="localXHR.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var editor = new Ext.Editor({
+        shadow: false,
+        completeOnEnter: true,
+        cancelOnEsc: true,
+        updateEl: true,
+        ignoreNoChange: true,
+        alignment: 'l-l',
+        field: {
+            allowBlank: false,
+            xtype: 'textfield',
+            width: 90,
+            selectOnFocus: true
+        }
+    });
+
+    Ext.getBody().on('dblclick', function(e, t){
+        editor.startEdit(t);
+    }, null, {
+        delegate: 'div div'
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div style="margin:50px;">
+            <div style="width:200px;float:left;">text1</div>
+            <div style="width:200px;float:left;">text2</div>
+        </div>
+    </body>
+</html>

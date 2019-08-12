@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>2.2.1</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    var tree = new Ext.tree.TreePanel({
+        loader: new Ext.tree.TreeLoader(),
+        root: new Ext.tree.AsyncTreeNode({
+            text:'root',
+            children: [
+                {text: 'Leaf No. 1',leaf: true},
+                {text: 'Leaf No. 2',leaf: true}
+            ]
+        })
+    });
+    tree.expand(true);
+    tree.render('tree');
+
+    Ext.get('button').on('click', function() {
+        tree.getRootNode().reload();
+    });
+});
+        </script>
+    </head>
+    <body>
+      <div id="tree"></div>
+      <button id="button">reload</button>
+    </body>
+</html>

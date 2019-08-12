@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+
+
+            var a = {
+                text: 'Edit',
+                menu: editmenu
+            };
+
+            var b = {};
+             Ext.apply(a,b);
+
+             console.log(b);
+
+            var
+            fileMenu = new Ext.menu.Menu({
+                id: 'file',
+                allowOtherMenus: true,
+                items: [
+                    {text: 'New'},
+                    {text: 'Open'},
+                    {text: 'Save'},
+                    {text: 'Save as...'},
+                ]
+            });
+
+            var findmenu = new Ext.menu.Menu({
+                id: 'find',
+                allowOtherMenus: true,
+                items: [
+                    {text: 'Find'},
+                    {text: 'Replace'},
+                    {text: 'Find in path'},
+                ]
+            });
+
+            var editmenu = new Ext.menu.Menu({
+                id: 'edit',
+                allowOtherMenus: true,
+                items: [
+                    {text: 'Undo'},
+                    {text: 'Copy'},
+                    {text: 'Cut'},
+                    {text: 'Find', menu: findmenu},
+                ]
+            });
+
+            var menuCheckbox = new Ext.menu.Menu({
+                items: [
+                    new Ext.menu.CheckItem({
+                        text: 'Bold',
+                        checked: true,
+                        checkHandler: function (item, checked) {
+                            Ext.Msg.alert('checkbox', (checked ? 'check ' : 'uncheck ') + 'Bold');
+                        }
+                    }),
+                    new Ext.menu.CheckItem({
+                        text: 'Italic',
+                        checkHandler: function (item, checked) {
+                            Ext.Msg.alert('checkbox', (checked ? 'check ' : 'uncheck ') + 'Italic');
+                        }
+                    })
+                ]
+            });
+
+            var menuRadio = new Ext.menu.Menu({
+                items: [
+                    new Ext.menu.CheckItem({
+                        text: 'Times',
+                        group: 'font',
+                        checked: true,
+                        checkHandler: function (item, checked) {
+                            Ext.Msg.alert('Radio', (checked ? 'check ' : 'uncheck ') + 'Times');
+                        }
+                    }),
+                    new Ext.menu.CheckItem({
+                        text: 'Times New Roma',
+                        group: 'font',
+                        checkHandler: function (item, checked) {
+                            Ext.Msg.alert('Radio', (checked ? 'check ' : 'uncheck ') + 'Times New Roma');
+                        }
+                    }),
+                    new Ext.menu.CheckItem({
+                        text: 'Helvetica',
+                        group: 'font',
+                        checkHandler: function (item, checked) {
+                            Ext.Msg.alert('Radio', (checked ? 'check ' : 'uncheck ') + 'Helvetica');
+                        }
+                    })
+                ]
+            });
+
+            var DateMenu = new Ext.menu.DateMenu({
+                handler: function (dp, date) {
+                    Ext.Msg.alert('Date', 'You select  ' + date.format('Y/m/d'));
+                }
+            });
+            var ColorMenu = new Ext.menu.ColorMenu({
+                handler: function (cm, color) {
+                    Ext.Msg.alert('Color', 'You select  #' + color);
+                }
+            });
+
+
+            var tb = new Ext.Toolbar();
+            tb.render('toolbar');
+            tb.add({
+                    text: 'File',
+                    menu: fileMenu
+                },
+                '-',
+                {
+                    text: 'Edit',
+                    menu: editmenu
+                },
+                {
+                    xtype: 'tbspacer',
+                    width: 30
+
+                }, {
+                    text: 'Style',
+                    menu: menuCheckbox
+                },
+                {
+                    text: 'Font',
+                    menu: menuRadio
+                },
+                {
+                    xtype: 'tbspacer',
+                    width: 30
+
+                }
+            );
+
+            tb.add({
+                text: 'Date',
+                menu: DateMenu
+            }, {
+                text: 'Color',
+                menu: ColorMenu
+            });
+
+            tb.add(new Ext.Toolbar.Fill());
+            tb.add('flow to right');
+            tb.doLayout();
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div id="toolbar"></div>
+
+
+</body>
+</html>

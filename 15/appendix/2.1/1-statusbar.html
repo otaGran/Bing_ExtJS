@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/statusbar/StatusBar.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+    new Ext.Panel({
+        title: '状态栏',
+        width: 300,
+        height: 100,
+        renderTo: 'status',
+        bbar: new Ext.ux.StatusBar({
+            id: 'my-status',
+
+            defaultText: 'Default status text',
+            defaultIconCls: 'default-icon',
+
+            text: 'Ready',
+            iconCls: 'ready-icon',
+
+            items: [{
+                text: 'ok',
+                handler: function() {
+                    Ext.getCmp('my-status').setStatus({
+                        text: 'OK',
+                        iconCls: 'ok-icon',
+                        clear: true
+                    });
+                }
+            }, '-', {
+                text: 'busy',
+                handler: function() {
+                    Ext.getCmp('my-status').showBusy();
+                }
+            }, '-', {
+                text: 'clear',
+                handler: function() {
+                    Ext.getCmp('my-status').clearStatus();
+                }
+            }]
+        })
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../../../resources/images/default/s.gif';
+        </script>
+        <div id="status" style="margin: 10px;"></div>
+    </body>
+</html>

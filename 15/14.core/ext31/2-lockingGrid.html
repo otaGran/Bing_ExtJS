@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+    <script type="text/javascript" src="../../ux/LockingGridView.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ux/css/LockingGridView.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var grid = new Ext.grid.GridPanel({
+        title: '锁定列',
+        width: 400,
+        height: 200,
+        store: new Ext.data.SimpleStore({
+            data: [
+                [1, 'name 1', 'male',   'true',  'male',   'true'],
+                [2, 'name 2', 'female', 'false', 'female', 'false'],
+                [3, 'name 3', 'male',   'false', 'male',   'false'],
+                [4, 'name 4', 'female', 'false', 'female', 'false'],
+                [5, 'name 5', 'male',   'true',  'male',   'true']
+            ],
+            fields: ['ext11', 'ext12', 'ext21', 'ext22', 'ext31', 'ext32']
+        }),
+        colModel: new Ext.ux.grid.LockingColumnModel([
+            {header: 'ext11', dataIndex: 'ext11'},
+            {header: 'ext12', dataIndex: 'ext12'},
+            {header: 'ext21', dataIndex: 'ext21'},
+            {header: 'ext22', dataIndex: 'ext22'},
+            {header: 'ext31', dataIndex: 'ext31'},
+            {header: 'ext32', dataIndex: 'ext32'}
+        ]),
+        renderTo: 'grid',
+        view: new Ext.ux.grid.LockingGridView()
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

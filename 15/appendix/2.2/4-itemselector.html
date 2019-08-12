@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>ext-2.2</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript">
+Ext.BLANK_IMAGE_URL = '../../../resources/images/default/s.gif';
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="../../ux/css/multiselect.css"/>
+        <script type="text/javascript" src="../../ux/MultiSelect.js"></script>
+        <script type="text/javascript" src="../../ux/ItemSelector.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var ds = new Ext.data.ArrayStore({
+        data: [[123,'One Hundred Twenty Three'],
+            ['1', 'One'], ['2', 'Two'], ['3', 'Three'], ['4', 'Four'], ['5', 'Five'],
+            ['6', 'Six'], ['7', 'Seven'], ['8', 'Eight'], ['9', 'Nine']],
+        fields: ['value','text'],
+        sortInfo: {
+            field: 'value',
+            direction: 'ASC'
+        }
+    });
+
+    var form = new Ext.form.FormPanel({
+        title: 'Item Selector',
+        width: 600,
+        items: [{
+            xtype:"itemselector",
+            name:"Item Selector",
+            fieldLabel:"ItemSelector",
+            imagePath:"../../ux/images/",
+            multiselects: [{
+                width: 250,
+                height: 200,
+                store: ds,
+                displayField: 'text',
+                valueField: 'value'
+            },{
+                width: 250,
+                height: 200,
+                store: [['10','Ten']]
+            }]
+        }]
+    });
+
+    form.render(document.body);
+
+});
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

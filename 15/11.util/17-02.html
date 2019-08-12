@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../../resources/css/ext-all.css" type="text/css">
+    <script src="../../adapter/ext/ext-base.js"></script>
+    <script src="../../ext-all-debug.js"></script>
+    <title>11.util</title>
+    <script type="text/javascript">
+var cls = 'my-class', text = 'Some text';
+var s = String.format('<div class="{0}">{1}</div>', cls, text);
+
+var s = String.leftPad('123', 5, '0');
+
+var sort = '';
+sort = sort.toggle('ASC', 'DESC');
+sort = (sort == 'ASC' ? 'DESC' : 'ASC');
+
+var s = '  foo bar  ';
+alert('-' + s + '-');           // 获得 "-  foo bar  -"
+alert('-' + s.trim() + '-');    // 获得 "-foo bar-"
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../shared/examples.js"></script>
+  </body>
+</html>

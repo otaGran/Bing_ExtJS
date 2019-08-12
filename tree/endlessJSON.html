@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css"/>
+    <!-- LIBS -->
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <!-- ENDLIBS -->
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+
+            var tree = new Ext.tree.TreePanel({
+                el: 'tree',
+                rootVisible: false,
+                enableDD: true,
+                loader: new Ext.tree.TreeLoader({dataUrl: '01-04-02.txt'})
+            });
+
+            var root = new Ext.tree.AsyncTreeNode({
+                id: '0',
+                text: 'Plant',
+
+            });
+
+            tree.setRootNode(root);
+            tree.render();
+            var treeEditor = new Ext.tree.TreeEditor(tree, {
+                allowBlank: false,
+
+            }, {
+                listeners: {
+                    complete: function (editor, currVal, origVal) {
+                        // Ext.Msg.alert('Tree Editor', 'node text changed from ' + origVal + ' to ' + currVal);
+                        let index = currVal.indexOf('red');
+                        if(index !== -1){
+                             console.log(editor.editNode);
+                            editor.editNode.setCls('turnRed');
+                        }
+                    }
+                }
+            });
+
+            root.expand(true, true);
+
+            // tree.on("expandnode", function(node){
+            //     Ext.Msg.show({
+            //         title: '提示',
+            //         msg: "你展开了" + node.text,
+            //         animEl: node.ui.textNode
+            //     });
+            // });
+            // tree.on("collapsenode", function(node){
+            //     Ext.Msg.show({
+            //         title: '提示',
+            //         msg: "你折叠 了" + node.text,
+            //         animEl: node.ui.textNode
+            //     });
+            // });
+
+            var contextmenu = new Ext.menu.Menu({
+                id: 'theContextMenu',
+                items: [{
+                    text: '有本事点我哦！',
+                    handler: function () {
+                        console.log(e);
+                    }
+                }]
+            });
+            tree.on("contextmenu", function (node, e) {
+                e.preventDefault();
+                node.select();
+                contextmenu.showAt(e.getXY());
+                node.setIcon('test.png')
+            });
+
+        });
+
+
+    </script>
+    <style type="text/css">
+        .turnRed x-tree-node a span{
+            color:red !important;
+        }
+    </style>
+
+</head>
+<body>
+<div id="tree" style="height: 300px;"></div>
+
+
+</body>
+</html>

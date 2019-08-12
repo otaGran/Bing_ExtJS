@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <title>11.util</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css"/>
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <style type="text/css">
+        .red {
+            background: red;
+        }
+    </style>
+    <script>
+
+
+        var addByTemplate = function () {
+            let data = {name: 'Tom', age: 11};
+
+        }
+        Ext.onReady(function () {
+            console.log(Ext.util.Format.capitalize('capitalize'));
+            var date = new Date();
+            console.log(date);
+            date.format('Y/m/d'')
+            let data = {
+                size: 5,
+                options: [
+                    {name: 'Tom', age: 12},
+                    {name: 'Alex', age: 11},
+                    {name: 'john', age: 19},
+                    {name: 'Doe', age: 15}
+                ]
+            };
+            let tmp = new Ext.XTemplate(
+                '<table>',
+                '<tpl for="values">',
+                '<tpl if="age&gt;12">',
+                '<tr><td>I am {name}, {age} years old.</td></tr>',
+                '</tpl>',
+                '</tpl>',
+                '</table>'
+            );
+            tmp.compile();
+            //tmp.append('panel',data);
+            //Ext.getCmp('panel').render();
+
+            var p = new Ext.Panel({
+                title: '123',
+                renderTo: 'test',
+                html: '123',
+                id: 'panel',
+                tpl: tmp,
+                data: [
+                    {name: 'Tom', age: 12},
+                    {name: 'Alex', age: 11},
+                    {name: 'john', age: 19},
+                    {name: 'Doe', age: 15}
+                ]
+
+            })
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

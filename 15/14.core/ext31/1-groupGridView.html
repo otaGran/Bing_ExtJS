@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+        <title>grid</title>
+        <link rel="stylesheet" type="text/css" href="../../../resources/css/ext-all.css" />
+        <script type="text/javascript" src="../../../adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="../../../ext-all.js"></script>
+        <script type="text/javascript" src="../../ux/ColumnHeaderGroup.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../ux/css/ColumnHeaderGroup.css" />
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+    var row = [
+        {header: 'Ext JS-1.x', colspan: 2, align: 'center'},
+        {header: 'Ext JS-2.x', colspan: 2, align: 'center'},
+        {header: 'Ext JS-3.x', colspan: 2, align: 'center'}
+    ];
+
+    var group = new Ext.ux.grid.ColumnHeaderGroup({
+        rows: [row]
+    });
+
+    var grid = new Ext.grid.GridPanel({
+        title: '分组表头',
+        width: 620,
+        autoHeight: true,
+        store: new Ext.data.SimpleStore({
+            data: [
+                [1, 'name 1', 'male',   'true',  'male',   'true'],
+                [2, 'name 2', 'female', 'false', 'female', 'false'],
+                [3, 'name 3', 'male',   'false', 'male',   'false'],
+                [4, 'name 4', 'female', 'false', 'female', 'false'],
+                [5, 'name 5', 'male',   'true',  'male',   'true']
+            ],
+            fields: ['ext11', 'ext12', 'ext21', 'ext22', 'ext31', 'ext32']
+        }),
+        columns: [
+            {header: 'ext11', dataIndex: 'ext11'},
+            {header: 'ext12', dataIndex: 'ext12'},
+            {header: 'ext21', dataIndex: 'ext21'},
+            {header: 'ext22', dataIndex: 'ext22'},
+            {header: 'ext31', dataIndex: 'ext31'},
+            {header: 'ext32', dataIndex: 'ext32'}
+        ],
+        renderTo: 'grid',
+        plugins: group
+    });
+
+});
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript" src="../../shared/examples.js"></script>
+        <div id="grid" style="margin: 10px;"></div>
+    </body>
+</html>

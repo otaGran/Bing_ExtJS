@@ -3,15 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css">
-    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
-    <script type="text/javascript" src="../ext-all.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/css/ext-all.css">
+    <script type="text/javascript" src="adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="ext-all.js"></script>
     <Script>
         Ext.onReady(function () {
 
+
+
+            let newArr = new Array(3);
+            newArr.fill(data);
+
+
+
+            var insertTable =  function () {
+                t.append(Ext.get("ReplyMessage"), newArr);
+
+            };
+
+            var resetEditor = function () {
+                Ext.getCmp('ReplyMessage').setValue('');
+                Ext.getCmp('submit').disable();
+            };
+
+
+            var data = {
+                name: '张三',
+                age: 13
+            };
+
+            var t = new Ext.XTemplate(
+                '<table>',
+                '<tpl for="values">',
+                '<tr><td>I am {name}, {age} years old.</td></tr>',
+                '</tpl>',
+                '</tpl>',
+                '</table>'
+            );
+            var contextmenu = new Ext.menu.Menu({
+                items: [
+                    {
+                        text: 'Edit', menu: [{
+                            text: 'Reset',
+                            handler: resetEditor
+                        }]
+                    },
+                    {
+                        text: 'Insert', menu: [{
+                            text: 'Table',
+                            handler: insertTable
+                        }]
+                    }
+
+                ]
+            });
+
             var blogEditor = new Ext.FormPanel({
                 title: 'blogEditor',
-
+                id: 'panel',
                 layout: 'form',
                 items: [{
                     xtype: 'toolbar',
@@ -19,9 +68,7 @@
                         text: 'Edit',
                         menu: [{
                             text: 'Reset',
-                            handler: function () {
-                                Ext.getCmp('ReplyMessage').setValue('');
-                            }
+                            handler: resetEditor
                         }]
 
 
@@ -29,9 +76,7 @@
                         text: 'Insert',
                         menu: [{
                             text: 'Table',
-                            handler: function () {
-                                Ext.getCmp('ReplyMessage').setValue('');
-                            }
+                            handler: insertTable
                         }]
 
 
@@ -40,17 +85,18 @@
                     xtype: 'textarea',
                     id: 'ReplyMessage',
                     fieldLabel: 'Editor',
-                    enableKeyEvents:true,
+                    enableKeyEvents: true,
                     anchor: '100%',
                     listeners: {
-                        'keydown': function (t,e) {
+                        'keyup': function (t, e) {
                             console.log('123');
                             if (Ext.getCmp('ReplyMessage').getValue() !== '')
                                 Ext.getCmp('submit').enable();
                             else
                                 Ext.getCmp('submit').disable();
                         }
-                    }
+                    },
+
                 }],
                 buttons: [{
                     text: 'Reply',
@@ -59,14 +105,14 @@
                     handler: function () {
                         Ext.MessageBox.wait('submit in progress', 'submit', {
                             interval: 100, //bar will move fast!
-                            duration: 2000,
-                            increment: 15,
+                            duration: 3000,
+                            increment: 30,
                             id: 'status',
-                            text: 'Updating...',
+                            text: 'Submiting...',
                             scope: this,
                             fn: function () {
                                 Ext.MessageBox.hide();
-                                Ext.MessageBox.alert('submit success');
+                                Ext.MessageBox.alert('submit', 'submit success');
                             }
                         });
                     }
@@ -79,11 +125,17 @@
             var window = new Ext.Window({
                 hidden: false,
                 renderTo: 'blogEditor',
-
-                items:[blogEditor],
-                width:400,
+                items: [blogEditor],
+                width: 400,
                 height: 500
             });
+
+            Ext.get(document).on('contextmenu', function (e) {
+                e.preventDefault();
+                contextmenu.showAt(e.getXY());
+
+
+            })
 
         });
     </Script>

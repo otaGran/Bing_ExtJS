@@ -27,21 +27,156 @@
     <script>
 
         Ext.onReady(function () {
+            var rowIndex = 0;
+            var tmpF = function () {
 
-            function renderDescn(value, cellmeta, record, rowIndex, columnIndex, store) {
-                var str = "<input type='button' value='查看详细信息' onclick='alert(\"" +
-                    "这个单元格的值是：" + value + "\\n" +
-                    "这个单元格的配置是：{cellId:" + cellmeta.cellId + ",id:" + cellmeta.id + ",css:" + cellmeta.css + "}\\n" +
-                    "这个单元格对应行的record是：" + record + "，一行的数据都在里边\\n" +
-                    "这是第" + rowIndex + "行\\n" +
-                    "这是第" + columnIndex + "列\\n" +
-                    "这个表格对应的Ext.data.Store在这里：" + store + "，随便用吧。" +
-                    "\")'>";
-                return str;
+
             }
+            var contextmenu = new Ext.menu.Menu({
+                items: [
+                    {
+                        text: 'Move', menu: [
+                            {
+                                text: 'Up',
+                                handler: function () {
+                                    let tmpRecord = store.getAt(rowIndex);
+                                    store.remove(tmpRecord);
+                                    store.insert(rowIndex === 0 ? rowIndex : rowIndex - 1, tmpRecord);
+                                    grid.view.refresh();
+                                }
+
+                            },
+                            {
+                                text: 'Down',
+                                handler: function () {
+                                    let tmpRecord = store.getAt(rowIndex);
+                                    let storeSize = store.getCount();
+                                    store.remove(tmpRecord);
+                                    store.insert(rowIndex === storeSize - 1 ? rowIndex : rowIndex + 1, tmpRecord);
+                                    grid.view.refresh();
+                                }
+
+                            },
+                            {
+                                text: 'First',
+                                handler: function () {
+                                    let tmpRecord = store.getAt(rowIndex);
+                                    store.remove(tmpRecord);
+                                    store.insert(0, tmpRecord);
+                                    grid.view.refresh();
+                                }
+
+                            },
+                            {
+                                text: 'Last',
+                                handler: function () {
+                                    let tmpRecord = store.getAt(rowIndex);
+                                    store.remove(tmpRecord);
+                                    store.add(tmpRecord);
+                                    grid.view.refresh();
+                                }
+
+                            }]
+                    }
+
+                ]
+            });
+
+            var form = new Ext.form.FormPanel({
+                labelAlign: 'right',
+                labelWidth: 50,
+                frame: true,
+                defaultType: 'textfield',
+                items: [{
+                    fieldLabel: 'Name',
+                    name: 'Name',
+                    id: 'InsertName'
+                }, {
+                    fieldLabel: 'Class',
+                    name: 'Class',
+                    id: 'InsertClass'
+                }, {
+                    fieldLabel: 'Sex',
+                    name: 'Sex',
+                    id: 'InsertSex'
+                }, {
+                    fieldLabel: 'Age',
+                    name: 'Age',
+                    id: 'InsertAge'
+                }, {
+                    fieldLabel: 'Birthday',
+                    name: 'Birthday',
+                    xtype: 'datefield',
+                    id: 'InsertBirthday'
+                },
+                    {
+                        xtype: 'fieldset',
+                        title: 'Avatar',
+                        id: 'InsertAvatar',
+                        autoHeight: true,
+                        defaultType: 'radio',
+                        hideLabels: true,
+                        items: [
+                            {boxLabel: '#1', name: 'radio', inputValue: '1', checked: true},
+                            {boxLabel: '#2', name: 'radio', inputValue: '2'},
+                        ]
+                    }
+
+
+                ]
+            });
+
+            var win = new Ext.Window({
+                el: 'window-win',
+                layout: 'fit',
+                width: 300,
+                title: 'form',
+                height: 350,
+                closeAction: 'hide',
+
+                items: [form],
+
+                buttons: [{
+                    text: 'Insert',
+                    id: 'InsertConfirm',
+                    handler: function () {
+                        win.hide();
+                        var p = new Record({
+                            name: Ext.getCmp('InsertName').getValue(),
+                            class: Ext.getCmp('InsertClass').getValue(),
+                            sex: Ext.getCmp('InsertSex').getValue(),
+                            age: Ext.getCmp('InsertAge').getValue(),
+                            birthday: Ext.getCmp('InsertBirthday').getValue(),
+                            avatar: Ext.getCmp('InsertAvatar').items.items[0].checked === true ? '2' : '1',
+
+                        });
+                        grid.stopEditing();
+                        let studentGrid = Ext.getCmp('sa');
+                        let insertIndex = store.indexOf(studentGrid.getSelectionModel().getSelections()[studentGrid.getSelectionModel().getCount() - 1]);
+                        console.log(insertIndex);
+                        store.insert(insertIndex === -1 ? 0 : insertIndex + 1, p);
+                        grid.startEditing(0, 0);
+                        grid.view.refresh();
+                    }
+                }]
+            });
+
+
+            // function renderDescn(value, cellmeta, record, rowIndex, columnIndex, store) {
+            //     var str = "<input type='button' value='查看详细信息' onclick='alert(\"" +
+            //         "这个单元格的值是：" + value + "\\n" +
+            //         "这个单元格的配置是：{cellId:" + cellmeta.cellId + ",id:" + cellmeta.id + ",css:" + cellmeta.css + "}\\n" +
+            //         "这个单元格对应行的record是：" + record + "，一行的数据都在里边\\n" +
+            //         "这是第" + rowIndex + "行\\n" +
+            //         "这是第" + columnIndex + "列\\n" +
+            //         "这个表格对应的Ext.data.Store在这里：" + store + "，随便用吧。" +
+            //         "\")'>";
+            //     return str;
+            // }
+
 //: name, class, sex, age, birthday, avatar.
 
-            var sm = new Ext.grid.CheckboxSelectionModel();
+            var sm = new Ext.grid.CheckboxSelectionModel({handleMouseDown: Ext.emptyFn});
             var cm = new Ext.grid.ColumnModel(
                 [
                     new Ext.grid.RowNumberer(),
@@ -51,7 +186,8 @@
                             new Ext.form.TextField({
                                 allowBlank: false
                             })
-                        )
+                        ),
+                        sortable: true
                     },
 
                     {
@@ -59,7 +195,8 @@
                             new Ext.form.TextField({
                                 allowBlank: false
                             })
-                        )
+                        ),
+                        sortable: true
 
                     },
 
@@ -80,33 +217,45 @@
 
                     },
                     {
-                        header: 'birthday', dataIndex: 'birthday', editor: new Ext.grid.GridEditor(
-                            new Ext.form.TextField({
-                                allowBlank: false
-                            })
-                        )
+                        header: 'birthday', dataIndex: 'birthday',
+                        editor: new Ext.grid.GridEditor(new Ext.form.DateField({
+                            format: 'Y-m-d',
+
+
+                        })),
+                        renderer: function (value) {
+                            return value.format("Y-m-d");
+                        }
+
 
                     },
                     {
-                        header: 'avatar', dataIndex: 'avatar', editor: new Ext.grid.GridEditor(
-                            new Ext.form.TextField({
-                                allowBlank: false
-                            })
-                        )
+                        header: 'avatar', dataIndex: 'avatar', renderer: function (value) {
+                            switch (value) {
+                                case '2':
+                                    return "<img src='user_male.png' />";
+                                case '1':
+                                    return "<img src='user_female.png' />";
+                                default:
+                                    return value;
+
+                            }
+
+                        }
 
                     },
 
                 ]);
 
             var data = [
-                ['Alex','Suez','male','18','xxx','xxx'],
-                ['Alex','Suez','male','18','xxx','xxx'],
-                ['Alex','Suez','male','18','xxx','xxx'],
-                ['Alex','Suez','male','18','xxx','xxx'],
+                ['1', 'Suez', 'male', '18', new Date(), '2'],
+                ['2', 'Suez', 'male', '18', new Date(), '1'],
+                ['3', 'Suez', 'male', '18', new Date(), '2'],
+                ['4', 'Suez', 'male', '18', new Date(), '1'],
             ];
 
             var store = new Ext.data.GroupingStore({
-                id:'storesa',
+                id: 'storesa',
                 proxy: new Ext.data.PagingMemoryProxy(data),
                 reader: new Ext.data.ArrayReader({}, [
                     {name: 'name'},
@@ -116,15 +265,18 @@
                     {name: 'birthday'},
                     {name: 'avatar'},
                 ]),
-                groupField:'sex',
+                groupField: '',
             });
-            store.load({params:{start: 0,limits:3}});
+            store.load({params: {start: 0, limits: 3}});
 
 
             var Record = Ext.data.Record.create([
-                {name: 'id', type: 'string'},
                 {name: 'name', type: 'string'},
-                {name: 'descn', type: 'string'}
+                {name: 'class', type: 'string'},
+                {name: 'sex', type: 'string'},
+                {name: 'age', type: 'string'},
+                {name: 'birthday', type: 'date'},
+                {name: 'avatar', type: 'string'},
             ]);
 
 
@@ -135,6 +287,7 @@
                 id: 'sa',
                 store: store,
                 view: new Ext.grid.GroupingView,
+
                 cm: cm,
                 sm: sm,
                 // viewConfig: {
@@ -164,36 +317,46 @@
                     emptyMsg: 'No record!'
                 }),
                 tbar: new Ext.Toolbar(['-', {
-                    text: '添加一行',
+                    text: 'Insert',
                     handler: function () {
-                        var p = new Record({
-                            id: '',
-                            name: '',
-                            descn: ''
-                        });
-                        grid.stopEditing();
-                        store.insert(0, p);
-                        grid.startEditing(0, 0);
+                        win.show();
+
+
                     }
                 }, '-', {
-                    text: '删除一行',
+                    text: 'Delete',
                     handler: function () {
                         Ext.Msg.confirm('信息', '确定要删除？', function (btn) {
-                            if (btn == 'yes') {
-                                var sxxm = grid.getSelectionModel();
-                                var cell = sxxm.getSelected();
-
-                                var record = store.getAt(cell[0]);
-                                store.remove(sxxm.getSelections());
+                            if (btn === 'yes') {
+                                store.remove(grid.getSelectionModel().getSelections());
+                                grid.view.refresh();
                             }
                         });
                     }
-                }, '-'])
+                }, '-', {
+                    text: 'Group By',
+                    handler: function () {
+
+                        Ext.MessageBox.prompt('Group By', 'Group by', function (btn, text) {
+                            store.groupField = text;
+                            grid.view.refresh();
+                        });
+
+                        // store.groupField = '';
+                        // grid.view.refresh();
+                    }
+                }])
 
 
             });
+            grid.on('rowcontextmenu', function (grid, Index, e) {
+                rowIndex = Index;
+                console.log(rowIndex);
+                e.preventDefault();
+                contextmenu.showAt(e.getXY());
 
 
+            })
 
 
         });
@@ -204,6 +367,7 @@
 <body>
 <div id="grid"></div>
 <div id="pGrid"></div>
+<div id="window-win"></div>
 
 </body>
 </html>

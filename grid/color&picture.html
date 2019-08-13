@@ -1,0 +1,209 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <title>11.util</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/ext-all.css"/>
+    <script type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../ext-all.js"></script>
+    <script type="text/javascript" src="../examples/ux/PagingMemoryProxy.js"></script>
+    <style type="text/css">
+        .white-row {
+            background-color: white;
+        }
+
+        .red-row {
+            background-color: #F5C0C0 !important;
+        }
+
+        .yellow-row {
+            background-color: #FBF8BF !important;
+        }
+
+        .green-row {
+            background-color: #99CC99 !important;
+        }
+    </style>
+
+    <script>
+
+        Ext.onReady(function () {
+
+            function renderDescn(value, cellmeta, record, rowIndex, columnIndex, store) {
+                var str = "<input type='button' value='查看详细信息' onclick='alert(\"" +
+                    "这个单元格的值是：" + value + "\\n" +
+                    "这个单元格的配置是：{cellId:" + cellmeta.cellId + ",id:" + cellmeta.id + ",css:" + cellmeta.css + "}\\n" +
+                    "这个单元格对应行的record是：" + record + "，一行的数据都在里边\\n" +
+                    "这是第" + rowIndex + "行\\n" +
+                    "这是第" + columnIndex + "列\\n" +
+                    "这个表格对应的Ext.data.Store在这里：" + store + "，随便用吧。" +
+                    "\")'>";
+                return str;
+            }
+//: name, class, sex, age, birthday, avatar.
+
+            var sm = new Ext.grid.CheckboxSelectionModel();
+            var cm = new Ext.grid.ColumnModel(
+                [
+                    new Ext.grid.RowNumberer(),
+                    sm,
+                    {
+                        header: 'name', dataIndex: 'name', editor: new Ext.grid.GridEditor(
+                            new Ext.form.TextField({
+                                allowBlank: false
+                            })
+                        )
+                    },
+
+                    {
+                        header: 'class', dataIndex: 'class', editor: new Ext.grid.GridEditor(
+                            new Ext.form.TextField({
+                                allowBlank: false
+                            })
+                        )
+
+                    },
+
+                    {
+                        header: 'sex', dataIndex: 'sex', editor: new Ext.grid.GridEditor(
+                            new Ext.form.TextField({
+                                allowBlank: false
+                            })
+                        )
+
+                    },
+                    {
+                        header: 'age', dataIndex: 'age', editor: new Ext.grid.GridEditor(
+                            new Ext.form.TextField({
+                                allowBlank: false
+                            })
+                        )
+
+                    },
+                    {
+                        header: 'birthday', dataIndex: 'birthday', editor: new Ext.grid.GridEditor(
+                            new Ext.form.TextField({
+                                allowBlank: false
+                            })
+                        )
+
+                    },
+                    {
+                        header: 'avatar', dataIndex: 'avatar', editor: new Ext.grid.GridEditor(
+                            new Ext.form.TextField({
+                                allowBlank: false
+                            })
+                        )
+
+                    },
+
+                ]);
+
+            var data = [
+                ['Alex','Suez','male','18','xxx','xxx'],
+                ['Alex','Suez','male','18','xxx','xxx'],
+                ['Alex','Suez','male','18','xxx','xxx'],
+                ['Alex','Suez','male','18','xxx','xxx'],
+            ];
+
+            var store = new Ext.data.GroupingStore({
+                id:'storesa',
+                proxy: new Ext.data.PagingMemoryProxy(data),
+                reader: new Ext.data.ArrayReader({}, [
+                    {name: 'name'},
+                    {name: 'class'},
+                    {name: 'sex'},
+                    {name: 'age'},
+                    {name: 'birthday'},
+                    {name: 'avatar'},
+                ]),
+                groupField:'sex',
+            });
+            store.load({params:{start: 0,limits:3}});
+
+
+            var Record = Ext.data.Record.create([
+                {name: 'id', type: 'string'},
+                {name: 'name', type: 'string'},
+                {name: 'descn', type: 'string'}
+            ]);
+
+
+            var grid = new Ext.grid.EditorGridPanel({
+                autoHeight: true,
+                loadMask: true,
+                renderTo: 'grid',
+                id: 'sa',
+                store: store,
+                view: new Ext.grid.GroupingView,
+                cm: cm,
+                sm: sm,
+                // viewConfig: {
+                //     forceFit: true,
+                //     enableRowBody: true,
+                //     getRowClass: function (record, rowIndex, p, ds) {
+                //         var cls = 'white-row';
+                //         switch (record.data.color) {
+                //             case '#FBF8BF' :
+                //                 cls = 'yellow-row'
+                //                 break;
+                //             case '#99CC99' :
+                //                 cls = 'green-row'
+                //                 break;
+                //             case '#F5C0C0' :
+                //                 cls = 'red-row'
+                //                 break;
+                //         }
+                //         return cls;
+                //     }
+                // },
+                bbar: new Ext.PagingToolbar({
+                    pageSize: 3,
+                    store: store,
+                    displayInfo: true,
+                    displayMsg: 'Display from #{0} to #{1}',
+                    emptyMsg: 'No record!'
+                }),
+                tbar: new Ext.Toolbar(['-', {
+                    text: '添加一行',
+                    handler: function () {
+                        var p = new Record({
+                            id: '',
+                            name: '',
+                            descn: ''
+                        });
+                        grid.stopEditing();
+                        store.insert(0, p);
+                        grid.startEditing(0, 0);
+                    }
+                }, '-', {
+                    text: '删除一行',
+                    handler: function () {
+                        Ext.Msg.confirm('信息', '确定要删除？', function (btn) {
+                            if (btn == 'yes') {
+                                var sxxm = grid.getSelectionModel();
+                                var cell = sxxm.getSelected();
+
+                                var record = store.getAt(cell[0]);
+                                store.remove(sxxm.getSelections());
+                            }
+                        });
+                    }
+                }, '-'])
+
+
+            });
+
+
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+<div id="grid"></div>
+<div id="pGrid"></div>
+
+</body>
+</html>
